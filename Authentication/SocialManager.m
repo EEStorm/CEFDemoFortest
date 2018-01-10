@@ -16,36 +16,63 @@ static SocialManager *_instance;
     
     if (platform == wechat) {
         
-        self.wechatmanager = [WechatManager new];
-        [self.wechatmanager registWXSDKwithAppkey:appkey appSecret:appSecret];
+        self.wechatmanager = [[WechatManager alloc]init];
         self.wechatAppkey = appkey;
         self.wechatSecret = appSecret;
         self.wechatmanager.appkey = appkey;
         self.wechatmanager.appsecret = appSecret;
         
+        [self.wechatmanager registWXSDKwithAppkey:appkey appSecret:appSecret];
+    }else {
+        
+        self.weiboManager = [[WeiboManager alloc]init];
+        [self.weiboManager registWXSDKwithAppkey:appkey appSecret:appSecret redirectURL:redirectURL];
+        self.weiboAppkey = appkey;
+        self.weiboSecret = appSecret;
+        self.weiboRedirectURL = redirectURL;
+    }
+    
+}
+
+-(void)getUserInfoWithPlatform:(Platform)platform completion:(Completion)completion {
+    
+    if (platform == wechat) {
+        
+        [self.wechatmanager sendReqWithAppkey:self.wechatAppkey];
+        self.wechatmanager.completion = completion;
+        
+    } else if (platform == weibo){
+        
+        [self.weiboManager sendReqWithAppkey:self.weiboAppkey redirectURL:self.weiboRedirectURL];
+        self.weiboManager.completion = completion;
     }else {
         
     }
     
 }
 
--(void)getUserInfoWithPlatform:(Platform)paltform completion:(Completion)completion {
+-(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
     
-    if (paltform == wechat) {
+    if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.sina.weibo"]) {
+        NSLog(@"新浪微博~");
         
-        [self.wechatmanager sendReqWithAppkey:self.wechatAppkey];
-
-        self.wechatmanager.completion = completion;
+        return [WeiboSDK handleOpenURL:url delegate:self.weiboManager];
         
-    } else {
+    }else if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.tencent.xin"]){
         
+        return [WXApi handleOpenURL:url delegate:self.wechatmanager];
+        
+    }else if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.tencent.mqq"]){
+        
+        /**
+         处理由手Q唤起的跳转请求
+         \param url 待处理的url跳转请求
+         \param delegate 第三方应用用于处理来至QQ请求及响应的委托对象
+         \return 跳转请求处理结果，YES表示成功处理，NO表示不支持的请求协议或处理失败
+         */
+        [QQApiInterface handleOpenURL:url delegate:self];
+        return [TencentOAuth HandleOpenURL:url];
     }
-    
-}
-
--(BOOL)handleOpenURL:(NSURL *)url{
-    
-    
     return [WXApi handleOpenURL:url delegate:self.wechatmanager];
 }
 

@@ -9,7 +9,9 @@
 
 #import <Foundation/Foundation.h>
 #import "WechatManager.h"
-#import "WXApi.h"
+#import "WeiboManager.h"
+
+//#import "WXApi.h"
 #import "WeiboSDK.h"
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
@@ -33,19 +35,33 @@ typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 @interface SocialManager : NSObject<WXApiDelegate>
 
 
+@property(copy,nonatomic)Completion completion;
+
+
+#pragma mark - 微信
 
 @property(strong,nonatomic)WechatManager *wechatmanager;
-@property(copy,nonatomic)Completion completion;
 @property(assign,nonatomic)NSString* wechatAppkey;
 @property(assign,nonatomic)NSString* wechatSecret;
+
+
+#pragma mark - 微博
+@property(strong,nonatomic)WeiboManager *weiboManager;
+@property(assign,nonatomic)NSString* weiboAppkey;
+@property(assign,nonatomic)NSString* weiboSecret;
+@property(assign,nonatomic)NSString *weiboRedirectURL;
+
+#pragma mark -
 
 +(instancetype)defaultManager;
 
 -(void)setPlaform:(Platform)platform appkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL;
 
--(void)getUserInfoWithPlatform:(Platform)paltform completion:(Completion)completion;
+-(void)getUserInfoWithPlatform:(Platform)platform completion:(Completion)completion;
 
--(BOOL)handleOpenURL:(NSURL *)url;
+-(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options;
+
+
 @end
 
 

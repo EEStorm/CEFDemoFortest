@@ -36,7 +36,7 @@
 		4ACC67452004CBE60087D995 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACC67442004CBE60087D995 /* AssetsLibrary.framework */; };
 		4ACC67482005DD540087D995 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC67472005DD540087D995 /* SocialManager.m */; };
 		4ACC674B2005E3410087D995 /* WechatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674A2005E3410087D995 /* WechatManager.m */; };
-		4ACC674E20060DB70087D995 /* weiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674D20060DB70087D995 /* weiboManager.m */; };
+		4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674D20060DB70087D995 /* WeiboManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,8 +80,8 @@
 		4ACC67472005DD540087D995 /* SocialManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
 		4ACC67492005E3410087D995 /* WechatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatManager.h; sourceTree = "<group>"; };
 		4ACC674A2005E3410087D995 /* WechatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatManager.m; sourceTree = "<group>"; };
-		4ACC674C20060DB70087D995 /* weiboManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = weiboManager.h; sourceTree = "<group>"; };
-		4ACC674D20060DB70087D995 /* weiboManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = weiboManager.m; sourceTree = "<group>"; };
+		4ACC674C20060DB70087D995 /* WeiboManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboManager.h; sourceTree = "<group>"; };
+		4ACC674D20060DB70087D995 /* WeiboManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,8 +150,8 @@
 				4ACC67472005DD540087D995 /* SocialManager.m */,
 				4ACC67492005E3410087D995 /* WechatManager.h */,
 				4ACC674A2005E3410087D995 /* WechatManager.m */,
-				4ACC674C20060DB70087D995 /* weiboManager.h */,
-				4ACC674D20060DB70087D995 /* weiboManager.m */,
+				4ACC674C20060DB70087D995 /* WeiboManager.h */,
+				4ACC674D20060DB70087D995 /* WeiboManager.m */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -275,7 +275,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4ACC674E20060DB70087D995 /* weiboManager.m in Sources */,
+				4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */,
 				4ACC674B2005E3410087D995 /* WechatManager.m in Sources */,
 				4ACC67482005DD540087D995 /* SocialManager.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
