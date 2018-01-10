@@ -15,9 +15,6 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 
 
-//微信开发者ID
-#define URL_APPID @"wx0a6553c087c9e3ea"
-#define URL_SECRET @"b55dda0f534a6014dd472442d22a6e29"
 
 typedef enum {
     
@@ -29,17 +26,18 @@ typedef enum {
     
 } Platform;
 
-typedef void(^Completion)(id result, NSError *error);
+typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 
 
 
-@interface SocialManager : NSObject<WXApiDelegate,WXDelegate>
+@interface SocialManager : NSObject<WXApiDelegate>
 
 
 
 @property(strong,nonatomic)WechatManager *wechatmanager;
 @property(copy,nonatomic)Completion completion;
-@property (nonatomic, weak)id<WXDelegate> wxDelegate;
+@property(assign,nonatomic)NSString* wechatAppkey;
+@property(assign,nonatomic)NSString* wechatSecret;
 
 +(instancetype)defaultManager;
 

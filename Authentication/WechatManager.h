@@ -18,14 +18,19 @@
 
 @end
 
+typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 
 @interface WechatManager : NSObject<WXApiDelegate,WXDelegate>
 
 
 @property (nonatomic, weak) id<WXDelegate> wxDelegate;
-
+@property (nonatomic, assign) NSString * appkey;
+@property (nonatomic, assign) NSString * appsecret;
+@property (nonatomic, assign) NSDictionary * result;
+@property (nonatomic, assign) NSInteger *error;
+@property(copy,nonatomic)Completion completion;
 
 -(void)registWXSDKwithAppkey:(NSString *)appkey appSecret:(NSString *)appSecret;
-
+-(void)sendReqWithAppkey:(NSString*)appkey ;
 
 @end

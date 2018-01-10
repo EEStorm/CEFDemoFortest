@@ -7,8 +7,6 @@
 //
 
 #import "WechatManager.h"
-#define URL_APPID @"wx0a6553c087c9e3ea"
-#define URL_SECRET @"b55dda0f534a6014dd472442d22a6e29"
 
 @implementation WechatManager
 
@@ -17,6 +15,23 @@
     [WXApi registerApp:appkey];
     
 }
+
+-(void)sendReqWithAppkey:(NSString *)appkey{
+    
+    if ([WXApi isWXAppInstalled]) {
+        SendAuthReq *req = [[SendAuthReq alloc]init];
+        req.scope = @"snsapi_userinfo";
+        req.openID = appkey;
+        req.state = @"1245";
+        self.wxDelegate = self;
+        
+        [WXApi sendReq:req];
+    }else{
+        //把微信登录的按钮隐藏掉。
+    }
+} 
+
+
 
 -(void) onResp:(BaseResp*)resp{
     NSLog(@"resp %d",resp.errCode);
@@ -34,6 +49,7 @@
     if ([resp isKindOfClass:[SendAuthResp class]]) {   //授权登录的类。
         if (resp.errCode == 0) {  //成功。
             //这里处理回调的方法 。 通过代理吧对应的登录消息传送过去。
+            self.error = resp.errCode;
             if ([_wxDelegate respondsToSelector:@selector(loginSuccessByCode:)]) {
                 SendAuthResp *resp2 = (SendAuthResp *)resp;
                 [_wxDelegate loginSuccessByCode:resp2.code];
@@ -73,7 +89,7 @@
     
     NSString *url =[NSString stringWithFormat:
                     @"https://api.weixin.qq.com/sns/oauth2/access_token?appid=%@&secret=%@&code=%@&grant_type=authorization_code",
-                    URL_APPID,URL_SECRET,code];
+                    self.appkey,self.appsecret,code];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         NSURL *zoneUrl = [NSURL URLWithString:url];
@@ -116,11 +132,12 @@
                 NSDictionary *dic = [NSJSONSerialization JSONObjectWithData:data
                                                                     options:NSJSONReadingMutableContainers error:nil];
                 
-                NSLog(@"%@",dic);
-                
-                NSString *openId = [dic objectForKey:@"openid"];
-                NSString *memNickName = [dic objectForKey:@"nickname"];
-                NSString *memSex = [dic objectForKey:@"sex"];
+                self.result = dic;
+               self.completion(self.result,self.error);
+//                NSLog(@"%@",dic);
+//                NSString *openId = [dic objectForKey:@"openid"];
+//                NSString *memNickName = [dic objectForKey:@"nickname"];
+//                NSString *memSex = [dic objectForKey:@"sex"];
                 
                 //                [self loginWithOpenId:openId memNickName:memNickName memSex:memSex];
             }
