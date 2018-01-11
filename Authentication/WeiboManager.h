@@ -23,7 +23,7 @@ typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 @property (nonatomic, assign) NSInteger *error;
 @property (nonatomic, weak) id<WBDelegate> wbDelegate;
 
--(void)sendReqWithAppkey:(NSString *)appkey redirectURL:(NSString *)redirectURL;
+-(void)sendReqWithAppkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL;
 -(void)registWXSDKwithAppkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL;
 
 @end

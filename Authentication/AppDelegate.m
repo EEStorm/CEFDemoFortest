@@ -36,10 +36,6 @@
     [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"http://www.baidu.com"];
 
     [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"http://com.infomedia.p3kapp"];
-//
-//    TencentOAuth *tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1105567034" andDelegate:self];
-//    NSArray *permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
-//    [tencentOAuth authorize:permissions];
     
     return YES;
 }

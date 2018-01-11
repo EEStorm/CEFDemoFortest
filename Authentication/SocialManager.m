@@ -50,7 +50,7 @@ static SocialManager *_instance;
         
     } else if (platform == weibo){
         
-        [self.weiboManager sendReqWithAppkey:self.weiboAppkey redirectURL:self.weiboRedirectURL];
+        [self.weiboManager sendReqWithAppkey:self.weiboAppkey appSecret:self.weiboSecret redirectURL:self.weiboRedirectURL];
         self.weiboManager.completion = completion;
     }else {
         [self.qqManager sendReqWithAppkey:self.qqAppkey redirectURL:self.qqRedirectURL];
@@ -81,7 +81,7 @@ static SocialManager *_instance;
         [QQApiInterface handleOpenURL:url delegate:self.qqManager];
         return [TencentOAuth HandleOpenURL:url];
     }
-    return [WXApi handleOpenURL:url delegate:self.wechatmanager];
+    return true;
 }
 
 

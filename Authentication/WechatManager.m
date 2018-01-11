@@ -56,9 +56,9 @@
                                                                     options:NSJSONReadingMutableContainers error:nil];
                 NSString *openId = [dic objectForKey:@"openid"];
                 NSString *accessToken = [dic objectForKey:@"access_token"];
-                NSString *reAccessToken = [dic objectForKey:@"refresh_token"];
+                NSString *refreshToken = [dic objectForKey:@"refresh_token"];
                 
-                if (reAccessToken) {
+                if (refreshToken) {
                     // 更新access_token、refresh_token、open_id
                      [self requestUserInfoByToken:accessToken andOpenid:openId];
                     
