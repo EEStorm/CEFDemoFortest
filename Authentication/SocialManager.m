@@ -23,13 +23,20 @@ static SocialManager *_instance;
         self.wechatmanager.appsecret = appSecret;
         
         [self.wechatmanager registWXSDKwithAppkey:appkey appSecret:appSecret];
-    }else {
+    }else if (platform == weibo){
         
         self.weiboManager = [[WeiboManager alloc]init];
         [self.weiboManager registWXSDKwithAppkey:appkey appSecret:appSecret redirectURL:redirectURL];
         self.weiboAppkey = appkey;
         self.weiboSecret = appSecret;
         self.weiboRedirectURL = redirectURL;
+    }else {
+        
+        self.qqManager = [[QQManager alloc]init];
+        [self.qqManager registWXSDKwithAppkey:appkey appSecret:appSecret redirectURL:redirectURL];
+        self.qqAppkey = appkey;
+        self.qqSecret = appSecret;
+        self.qqRedirectURL = redirectURL;
     }
     
 }
@@ -46,7 +53,8 @@ static SocialManager *_instance;
         [self.weiboManager sendReqWithAppkey:self.weiboAppkey redirectURL:self.weiboRedirectURL];
         self.weiboManager.completion = completion;
     }else {
-        
+        [self.qqManager sendReqWithAppkey:self.qqAppkey redirectURL:self.qqRedirectURL];
+        self.qqManager.completion = completion;
     }
     
 }
@@ -70,7 +78,7 @@ static SocialManager *_instance;
          \param delegate 第三方应用用于处理来至QQ请求及响应的委托对象
          \return 跳转请求处理结果，YES表示成功处理，NO表示不支持的请求协议或处理失败
          */
-        [QQApiInterface handleOpenURL:url delegate:self];
+        [QQApiInterface handleOpenURL:url delegate:self.qqManager];
         return [TencentOAuth HandleOpenURL:url];
     }
     return [WXApi handleOpenURL:url delegate:self.wechatmanager];

@@ -196,6 +196,7 @@ typedef void(^WXLogBolock)(NSString * log);
 @property (nonatomic, retain) NSString* scope;
 /** 第三方程序本身用来标识其请求的唯一性，最后跳转回第三方程序时，由微信终端回传。
  * @note state字符串长度不能超过1K
+ *  用于保持请求和回调的状态，授权请求后原样带回给第三方。该参数可用于防止csrf攻击（跨站请求伪造攻击），建议第三方带上该参数，可设置为简单的随机数加session进行校验
  */
 @property (nonatomic, retain) NSString* state;
 @end

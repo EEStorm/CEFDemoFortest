@@ -9,8 +9,6 @@
 #import "AppDelegate.h"
 #import "WXApi.h"
 #import "WeiboSDK.h"
-#import <TencentOpenAPI/QQApiInterface.h>
-#import <TencentOpenAPI/TencentOAuth.h>
 #import "SocialManager.h"
 
 //微信开发者ID
@@ -19,6 +17,9 @@
 
 #define IFM_SinaAPPKey      @"2161062029"
 #define IFM_SinaAppSecret   @"8882ed1ca6c30b9b8794765ec3313a39"
+
+#define QQ_APPID @"1105567034"
+#define QQ_SECRET @"i9u9zTaunPX7JIzM"
 
 @interface AppDelegate ()<TencentSessionDelegate>
 
@@ -33,8 +34,8 @@
     [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil];
     
     [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"http://www.baidu.com"];
-//    [WeiboSDK enableDebugMode:true];
-//    [WeiboSDK registerApp:IFM_SinaAPPKey];
+
+    [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"http://com.infomedia.p3kapp"];
 //
 //    TencentOAuth *tencentOAuth = [[TencentOAuth alloc] initWithAppId:@"1105567034" andDelegate:self];
 //    NSArray *permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
@@ -51,32 +52,15 @@
     return YES;
 }
 
-
-
-/**
- 处理来至QQ的请求
- */
-- (void)onReq:(QQBaseReq *)req{
-    NSLog(@" ----req %@",req);
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
+    return [TencentOAuth HandleOpenURL:url];
 }
 
-//- (void)tencentDidLogin
-//{
-//    [_tencentOAuth getUserInfo];
-//}
-/**
- 处理来至QQ的响应
- */
-//- (void)onResp:(QQBaseResp *)resp{
-//    NSLog(@" ----resp %@",resp);
-//}
-
-/**
- 处理QQ在线状态的回调
- */
-- (void)isOnlineResponse:(NSDictionary *)response{
-    
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
+    return [TencentOAuth HandleOpenURL:url];
 }
+
+
 
 
 

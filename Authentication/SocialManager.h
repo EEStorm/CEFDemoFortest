@@ -10,6 +10,7 @@
 #import <Foundation/Foundation.h>
 #import "WechatManager.h"
 #import "WeiboManager.h"
+#import "QQManager.h"
 
 //#import "WXApi.h"
 #import "WeiboSDK.h"
@@ -40,18 +41,24 @@ typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 
 #pragma mark - 微信
 
-@property(strong,nonatomic)WechatManager *wechatmanager;
+@property(strong,nonatomic)WechatManager * wechatmanager;
 @property(assign,nonatomic)NSString* wechatAppkey;
 @property(assign,nonatomic)NSString* wechatSecret;
 
 
 #pragma mark - 微博
 @property(strong,nonatomic)WeiboManager *weiboManager;
-@property(assign,nonatomic)NSString* weiboAppkey;
-@property(assign,nonatomic)NSString* weiboSecret;
-@property(assign,nonatomic)NSString *weiboRedirectURL;
+@property(assign,nonatomic)NSString * weiboAppkey;
+@property(assign,nonatomic)NSString * weiboSecret;
+@property(assign,nonatomic)NSString * weiboRedirectURL;
 
-#pragma mark -
+#pragma mark - QQ
+@property(strong,nonatomic)QQManager * qqManager;
+@property(assign,nonatomic)NSString * qqAppkey;
+@property(assign,nonatomic)NSString * qqSecret;
+@property(assign,nonatomic)NSString * qqRedirectURL;
+
+
 
 +(instancetype)defaultManager;
 
