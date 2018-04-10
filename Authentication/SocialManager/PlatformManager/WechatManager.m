@@ -23,14 +23,14 @@
         NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"WX_ACCESS_TOKEN"];
         NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"WX_OPEN_ID"];
        
-        if (accessToken && openID) {
-
-            [self wechatRefreshToken:appkey];
-            
-        }else {
-            
+//        if (accessToken && openID) {
+//
+//            [self wechatRefreshToken:appkey];
+//
+//        }else {
+        
             [self wechatLogin:appkey];
-        }
+//        }
         
     }else{
         //把微信登录的按钮隐藏掉。
@@ -123,26 +123,6 @@
             [alert show];
         }
     }
-    
-    /*
-    if ([resp isKindOfClass:[SendMessageToWXResp class]]) { //微信分享 微信回应给第三方应用程序的类
-        SendMessageToWXResp *response = (SendMessageToWXResp *)resp;
-        NSLog(@"error code %d  error msg %@  lang %@   country %@",response.errCode,response.errStr,response.lang,response.country);
-        
-        if (resp.errCode == 0) {  //成功。
-            //这里处理回调的方法 。 通过代理吧对应的登录消息传送过去。
-            if (_wxDelegate) {
-                if([_wxDelegate respondsToSelector:@selector(shareSuccessByCode:)]){
-                    [_wxDelegate shareSuccessByCode:response.errCode];
-                }
-            }
-        }else{ //失败
-            NSLog(@"error %@",resp.errStr);
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"分享失败" message:[NSString stringWithFormat:@"reason : %@",resp.errStr] delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-            [alert show];
-        }
-    }
-    */
     
 }
 

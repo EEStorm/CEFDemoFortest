@@ -19,13 +19,27 @@
 
 -(void)sendReqWithAppkey:(NSString *)appkey redirectURL:(NSString *)redirectURL {
     
+    
+    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_ACCESS_TOKEN"];
+    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_OPEN_ID"];
+    
+    if (accessToken && openID) {
+        
+        [_tencentOAuth getUserInfo];
+        
+    }else {
+        
+        [self QQLogin];
+    }
+    
+}
+
+
+-(void)QQLogin{
     NSArray *permissions = [NSArray arrayWithObjects:kOPEN_PERMISSION_GET_INFO, kOPEN_PERMISSION_GET_USER_INFO, kOPEN_PERMISSION_GET_SIMPLE_USER_INFO, nil];
     [self.tencentOAuth authorize:permissions];
 }
 
-/**
- * 登录成功后的回调
- */
 - (void)tencentDidLogin{
     
     /** Access Token凭证，用于后续访问各开放接口 */
@@ -33,7 +47,6 @@
         
         //获取用户信息。 调用这个方法后，qq的sdk会自动调用
         //- (void)getUserInfoResponse:(APIResponse*) response
-        //这个方法就是 用户信息的回调方法。
         
         [_tencentOAuth getUserInfo];
     }else{
@@ -43,10 +56,6 @@
     
 }
 
-/**
- * 登录失败后的回调
- * \param cancelled 代表用户是否主动退出登录
- */
 - (void)tencentDidNotLogin:(BOOL)cancelled{
     if (cancelled) {
         NSLog(@" 用户点击取消按键,主动退出登录");
@@ -55,21 +64,10 @@
     }
 }
 
-/**
- * 登录时网络有问题的回调
- */
 - (void)tencentDidNotNetWork{
     NSLog(@"没有网络了， 怎么登录成功呢");
 }
 
-
-/**
- * 因用户未授予相应权限而需要执行增量授权。在用户调用某个api接口时，如果服务器返回操作未被授权，则触发该回调协议接口，由第三方决定是否跳转到增量授权页面，让用户重新授权。
- * \param tencentOAuth 登录授权对象。
- * \param permissions 需增量授权的权限列表。
- * \return 是否仍然回调返回原始的api请求结果。
- * \note 不实现该协议接口则默认为不开启增量授权流程。若需要增量授权请调用\ref TencentOAuth#incrAuthWithPermissions: \n注意：增量授权时用户可能会修改登录的帐号
- */
 - (BOOL)tencentNeedPerformIncrAuth:(TencentOAuth *)tencentOAuth withPermissions:(NSArray *)permissions{
     
     // incrAuthWithPermissions是增量授权时需要调用的登录接口
@@ -86,6 +84,8 @@
  * \note 不实现该协议接口则默认为不开启重新登录授权流程。若需要重新登录授权请调用\ref TencentOAuth#reauthorizeWithPermissions: \n注意：重新登录授权时用户可能会修改登录的帐号
  */
 - (BOOL)tencentNeedPerformReAuth:(TencentOAuth *)tencentOAuth{
+    
+    [self QQLogin];
     return YES;
 }
 
@@ -98,8 +98,9 @@
     NSLog(@"增量授权完成");
     if (tencentOAuth.accessToken
         && 0 != [tencentOAuth.accessToken length])
-    { // 在这里第三方应用需要更新自己维护的token及有效期限等信息
-        // **务必在这里检查用户的openid是否有变更，变更需重新拉取用户的资料等信息** _labelAccessToken.text = tencentOAuth.accessToken;
+    {
+        [[NSUserDefaults standardUserDefaults]setObject:tencentOAuth.accessToken forKey:@"QQ_ACCESS_TOKEN"];
+        [[NSUserDefaults standardUserDefaults]setObject:tencentOAuth.openId forKey:@"QQ_OPEN_ID"];
     }
     else
     {
@@ -141,14 +142,20 @@
 
 /**
  * 获取用户个人信息回调
- * \param response API返回结果，具体定义参见sdkdef.h文件中\ref APIResponse
- * \remarks 正确返回示例: \snippet example/getUserInfoResponse.exp success
- *          错误返回示例: \snippet example/getUserInfoResponse.exp fail
  */
 - (void)getUserInfoResponse:(APIResponse*) response{
-//    NSLog(@" response %@",response);
-//    NSLog(@" response %@",response.jsonResponse);
+    NSLog(@" response %@",response);
+    NSLog(@" response %@",response.jsonResponse);
+    
+    NSString *accessToken = response.jsonResponse[@"access_token"];
+    NSString *openId = response.jsonResponse[@"openid"];
+    if (accessToken && (![accessToken isEqual: @""])&& openId && ![openId isEqual: @""]) {
+        
+        [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
+        [[NSUserDefaults standardUserDefaults]setObject:openId forKey:@"QQ_OPEN_ID"];
+    }
     self.completion(response.jsonResponse, 0);
+    
 }
 
 @end
