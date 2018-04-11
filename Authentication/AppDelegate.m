@@ -11,6 +11,8 @@
 #import "WeiboSDK.h"
 #import "SocialManager.h"
 
+#import "AlipaySDK/AlipaySDK.h"
+
 //微信开发者ID
 #define URL_APPID @"wx0a6553c087c9e3ea"
 #define URL_SECRET @"b55dda0f534a6014dd472442d22a6e29"
@@ -42,11 +44,33 @@
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
 
-    
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+    }
     return [[SocialManager defaultManager] handleOpenURL:url options:options];
 
+}
+
+
+
+- (BOOL)application:(UIApplication *)application
+            openURL:(NSURL *)url
+  sourceApplication:(NSString *)sourceApplication
+         annotation:(id)annotation {
+    
+    if ([url.host isEqualToString:@"safepay"]) {
+        //跳转支付宝钱包进行支付，处理支付结果
+        [[AlipaySDK defaultService] processOrderWithPaymentResult:url standbyCallback:^(NSDictionary *resultDic) {
+            NSLog(@"result = %@",resultDic);
+        }];
+    }
     return YES;
 }
+
+
 
 //- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
 //    return [TencentOAuth HandleOpenURL:url];

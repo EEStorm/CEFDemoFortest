@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4ABCD501207C792E002414D3 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABCD500207C792E002414D3 /* CFNetwork.framework */; };
+		4ABCD503207C7948002414D3 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ABCD502207C7948002414D3 /* CoreMotion.framework */; };
 		4ACC66F0200358790087D995 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC66EF200358790087D995 /* AppDelegate.m */; };
 		4ACC66F3200358790087D995 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC66F2200358790087D995 /* ViewController.m */; };
 		4ACC66F6200358790087D995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ACC66F4200358790087D995 /* Main.storyboard */; };
@@ -38,9 +40,13 @@
 		4ACC674B2005E3410087D995 /* WechatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674A2005E3410087D995 /* WechatManager.m */; };
 		4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674D20060DB70087D995 /* WeiboManager.m */; };
 		4ACC675120061F0C0087D995 /* QQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC675020061F0C0087D995 /* QQManager.m */; };
+		4AED063B207C7B680026A25F /* AlipaySDK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 4AED0639207C7B680026A25F /* AlipaySDK.bundle */; };
+		4AED063C207C7B680026A25F /* AlipaySDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AED063A207C7B680026A25F /* AlipaySDK.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4ABCD500207C792E002414D3 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		4ABCD502207C7948002414D3 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
 		4ACC66EB200358780087D995 /* Authentication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authentication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACC66EE200358790087D995 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4ACC66EF200358790087D995 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -85,6 +91,8 @@
 		4ACC674D20060DB70087D995 /* WeiboManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 		4ACC674F20061F0C0087D995 /* QQManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQManager.h; sourceTree = "<group>"; };
 		4ACC675020061F0C0087D995 /* QQManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQManager.m; sourceTree = "<group>"; };
+		4AED0639207C7B680026A25F /* AlipaySDK.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AlipaySDK.bundle; sourceTree = "<group>"; };
+		4AED063A207C7B680026A25F /* AlipaySDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AlipaySDK.framework; path = "../../../../Downloads/WS_APP_PAY_SDK_BASE_2.0 3/Demo/iOSDemo_2.0(SDK_15.5.3)/AlipaySDK.framework"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +100,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4ABCD503207C7948002414D3 /* CoreMotion.framework in Frameworks */,
+				4ABCD501207C792E002414D3 /* CFNetwork.framework in Frameworks */,
 				4ACC67452004CBE60087D995 /* AssetsLibrary.framework in Frameworks */,
 				4ACC673E2004801D0087D995 /* Photos.framework in Frameworks */,
 				4ACC67432004CB8A0087D995 /* TencentOpenAPI.framework in Frameworks */,
@@ -107,6 +117,7 @@
 				4ACC671620035A1B0087D995 /* CoreTelephony.framework in Frameworks */,
 				4ACC671420035A110087D995 /* SystemConfiguration.framework in Frameworks */,
 				4ACC6712200359FE0087D995 /* libsqlite3.0.tbd in Frameworks */,
+				4AED063C207C7B680026A25F /* AlipaySDK.framework in Frameworks */,
 				4ACC6726200477480087D995 /* libWeiboSDK.a in Frameworks */,
 				4ACC6710200359EA0087D995 /* libz.tbd in Frameworks */,
 				4ACC670E200359D80087D995 /* libc++.tbd in Frameworks */,
@@ -177,6 +188,8 @@
 				4ACC66F4200358790087D995 /* Main.storyboard */,
 				4ACC66FC200358790087D995 /* Info.plist */,
 				4A9B528920073344008F09B1 /* SocialManager */,
+				4AED0639207C7B680026A25F /* AlipaySDK.bundle */,
+				4AED063A207C7B680026A25F /* AlipaySDK.framework */,
 				4ACC67422004CB8A0087D995 /* TencentOpenAPI.framework */,
 				4ACC6721200477480087D995 /* libWeiboSDK */,
 				4ACC6704200358DC0087D995 /* WechatSDK1.8.2 */,
@@ -200,6 +213,8 @@
 		4ACC670C200359D70087D995 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4ABCD502207C7948002414D3 /* CoreMotion.framework */,
+				4ABCD500207C792E002414D3 /* CFNetwork.framework */,
 				4ACC67442004CBE60087D995 /* AssetsLibrary.framework */,
 				4ACC673D2004801D0087D995 /* Photos.framework */,
 				4ACC673B20047FCD0087D995 /* libstdc++.tbd */,
@@ -289,6 +304,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AED063B207C7B680026A25F /* AlipaySDK.bundle in Resources */,
 				4ACC66FB200358790087D995 /* LaunchScreen.storyboard in Resources */,
 				4ACC66F8200358790087D995 /* Assets.xcassets in Resources */,
 				4ACC6727200477480087D995 /* WeiboSDK.bundle in Resources */,
@@ -449,6 +465,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Authentication",
+					"$(PROJECT_DIR)/Authentication/Support\\ File",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Support",
+					File,
 				);
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -476,6 +497,11 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Authentication",
+					"$(PROJECT_DIR)/Authentication/Support\\ File",
+				);
+				HEADER_SEARCH_PATHS = (
+					"$(SRCROOT)/Support",
+					File,
 				);
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

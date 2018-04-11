@@ -19,7 +19,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D0H-Wi-Vgq">
-                                <rect key="frame" x="119" y="318" width="137" height="30"/>
+                                <rect key="frame" x="119" y="161" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="微博登录"/>
                                 <connections>
@@ -27,7 +27,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpI-6U-4by">
-                                <rect key="frame" x="115" y="116" width="137" height="30"/>
+                                <rect key="frame" x="115" y="49" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="微信登录"/>
                                 <connections>
@@ -35,11 +35,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eIC-0e-cAH">
-                                <rect key="frame" x="115" y="461" width="137" height="30"/>
+                                <rect key="frame" x="119" y="245" width="137" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="QQ登录"/>
                                 <connections>
                                     <action selector="QQLoginbtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cr7-Eq-fhJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wcf-Fh-ksP">
+                                <rect key="frame" x="136" y="294" width="103" height="24"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="支付宝支付"/>
+                                <connections>
+                                    <action selector="alipaybtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="1xh-k9-OhI"/>
                                 </connections>
                             </button>
                         </subviews>
