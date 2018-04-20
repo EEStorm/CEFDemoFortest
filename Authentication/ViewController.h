@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "SocialManager.h"
+#import "CompleteProfileController.h"
 
 @interface ViewController : UIViewController
 

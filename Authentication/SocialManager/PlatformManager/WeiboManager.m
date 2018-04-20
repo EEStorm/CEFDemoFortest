@@ -27,14 +27,14 @@
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_ACCESS_TOKEN"];
     NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_USER_ID"];
 
-    if (accessToken && openID) {
-        
-        [self weiboRefreshToken:appkey appSecret:appSecret redirectURL:redirectURL];
-        
-    }else {
-        
+//    if (accessToken && openID) {
+//
+//        [self weiboRefreshToken:appkey appSecret:appSecret redirectURL:redirectURL];
+//
+//    }else {
+    
         [self weiboLogin:appkey redirectURL:redirectURL];
-    }
+//    }
     
 }
 
@@ -145,9 +145,14 @@
 {
     if ([response isKindOfClass:WBAuthorizeResponse.class])
     {
+        
         NSString *userId = [(WBAuthorizeResponse *)response userID];
         NSString *accessToken = [(WBAuthorizeResponse *)response accessToken];
         NSString *refreshToken = [(WBAuthorizeResponse *)response refreshToken];
+        
+        if (userId == nil) {
+            return;
+        }
         
         if (refreshToken) {
             // 更新access_token、refresh_token、open_id

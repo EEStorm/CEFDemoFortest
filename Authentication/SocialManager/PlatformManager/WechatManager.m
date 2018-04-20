@@ -187,6 +187,8 @@
                                                                     options:NSJSONReadingMutableContainers error:nil];
                 
                 self.result = dic;
+                
+                
                self.completion(self.result,self.error);
 //                NSLog(@"%@",dic);
 //                NSString *openId = [dic objectForKey:@"openid"];

@@ -23,14 +23,14 @@
     NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_ACCESS_TOKEN"];
     NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_OPEN_ID"];
     
-    if (accessToken && openID) {
-        
-        [_tencentOAuth getUserInfo];
-        
-    }else {
-        
+//    if (accessToken && openID) {
+//
+//        [_tencentOAuth getUserInfo];
+//
+//    }else {
+    
         [self QQLogin];
-    }
+//    }
     
 }
 

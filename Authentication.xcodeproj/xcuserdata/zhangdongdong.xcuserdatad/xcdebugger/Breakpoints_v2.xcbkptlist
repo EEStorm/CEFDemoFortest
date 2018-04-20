@@ -89,22 +89,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Authentication/ViewController.m"
-            timestampString = "543295337.218745"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "-wechatbtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Authentication/WechatManager.m"
             timestampString = "537341875.397155"
             startingColumnNumber = "9223372036854775807"
@@ -346,7 +330,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.98254"
+            timestampString = "545906126.921563"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -362,7 +346,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.982895"
+            timestampString = "545906126.921639"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -378,7 +362,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.983183"
+            timestampString = "545906126.921685"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "155"
@@ -394,23 +378,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.983496"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
-            landmarkName = "-sendReqWithAppkey:redirectURL:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.983771"
+            timestampString = "545906126.921736"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -426,7 +394,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.984089"
+            timestampString = "545906126.921777"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "149"
@@ -442,7 +410,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.5031151"
+            timestampString = "545906126.921834"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -458,7 +426,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.503547"
+            timestampString = "545906126.922186"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "118"
@@ -474,7 +442,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/AppDelegate.m"
-            timestampString = "545022545.983532"
+            timestampString = "545906126.922425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "45"
@@ -490,7 +458,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/AppDelegate.m"
-            timestampString = "545022545.983718"
+            timestampString = "545906126.92247"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "32"
@@ -502,7 +470,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/SocialManager.m"
@@ -518,7 +486,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/SocialManager.m"
@@ -534,27 +502,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Authentication/ViewController.m"
-            timestampString = "543295337.2208821"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "33"
-            endingLineNumber = "33"
-            landmarkName = "-wechatbtn:"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WeiboManager.m"
-            timestampString = "537346969.985065"
+            timestampString = "545906126.92261"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "104"
@@ -570,7 +522,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "537346969.985148"
+            timestampString = "545906126.922874"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "88"
@@ -586,7 +538,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.504148"
+            timestampString = "545906126.922922"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "25"
@@ -602,7 +554,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.504377"
+            timestampString = "545906126.923154"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "60"
@@ -618,7 +570,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.504566"
+            timestampString = "545906126.923378"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "174"
@@ -634,7 +586,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.5047621"
+            timestampString = "545906126.923649"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -650,7 +602,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.505097"
+            timestampString = "545906126.923898"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "93"
@@ -666,7 +618,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.505291"
+            timestampString = "545906126.9241329"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "130"
@@ -682,7 +634,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.505483"
+            timestampString = "545906126.924354"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "154"
@@ -698,7 +650,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/WechatManager.m"
-            timestampString = "545900647.505671"
+            timestampString = "545906126.9245729"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "177"
@@ -714,7 +666,7 @@
                   moduleName = "Authentication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangdongdong/Documents/CEF/CEFDemoFortest/Authentication/SocialManager/PlatformManager/WechatManager.m"
-                  timestampString = "545900549.649954"
+                  timestampString = "545905430.128563"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "178"
@@ -729,7 +681,7 @@
                   moduleName = "Authentication"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/zhangdongdong/Documents/CEF/CEFDemoFortest/Authentication/SocialManager/PlatformManager/WechatManager.m"
-                  timestampString = "545900549.6526639"
+                  timestampString = "545905430.131421"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "178"
@@ -746,12 +698,28 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/AppDelegate.m"
-            timestampString = "545022545.9892679"
+            timestampString = "545906126.924805"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "33"
             endingLineNumber = "33"
             landmarkName = "-application:didFinishLaunchingWithOptions:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Authentication/SocialManager/PlatformManager/WeiboManager.m"
+            timestampString = "545906126.924852"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "149"
+            endingLineNumber = "149"
+            landmarkName = "-didReceiveWeiboResponse:"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */; };
+		4A1B17582089CACD00D26A72 /* shoppingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4A1B174E2089CACC00D26A72 /* shoppingCell.xib */; };
+		4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B174F2089CACD00D26A72 /* CompleteProfileController.m */; };
+		4A1B175A2089CACD00D26A72 /* CompleteProfile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4A1B17522089CACD00D26A72 /* CompleteProfile.storyboard */; };
+		4A1B175B2089CACD00D26A72 /* ShoppingListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */; };
+		4A1B175C2089CACD00D26A72 /* shoppingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A1B17552089CACD00D26A72 /* shoppingCell.m */; };
 		4ACC66F0200358790087D995 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC66EF200358790087D995 /* AppDelegate.m */; };
 		4ACC66F3200358790087D995 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC66F2200358790087D995 /* ViewController.m */; };
 		4ACC66F6200358790087D995 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4ACC66F4200358790087D995 /* Main.storyboard */; };
@@ -41,6 +47,16 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListModel.m; sourceTree = "<group>"; };
+		4A1B174E2089CACC00D26A72 /* shoppingCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = shoppingCell.xib; sourceTree = "<group>"; };
+		4A1B174F2089CACD00D26A72 /* CompleteProfileController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CompleteProfileController.m; sourceTree = "<group>"; };
+		4A1B17502089CACD00D26A72 /* shoppingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = shoppingCell.h; sourceTree = "<group>"; };
+		4A1B17512089CACD00D26A72 /* ShoppingListModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListModel.h; sourceTree = "<group>"; };
+		4A1B17522089CACD00D26A72 /* CompleteProfile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CompleteProfile.storyboard; sourceTree = "<group>"; };
+		4A1B17532089CACD00D26A72 /* ShoppingListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShoppingListViewController.h; sourceTree = "<group>"; };
+		4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShoppingListViewController.m; sourceTree = "<group>"; };
+		4A1B17552089CACD00D26A72 /* shoppingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = shoppingCell.m; sourceTree = "<group>"; };
+		4A1B17562089CACD00D26A72 /* CompleteProfileController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CompleteProfileController.h; sourceTree = "<group>"; };
 		4ACC66EB200358780087D995 /* Authentication.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Authentication.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4ACC66EE200358790087D995 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		4ACC66EF200358790087D995 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -117,6 +133,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A1B174C2089CAAD00D26A72 /* CEFDemo */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B17522089CACD00D26A72 /* CompleteProfile.storyboard */,
+				4A1B17562089CACD00D26A72 /* CompleteProfileController.h */,
+				4A1B174F2089CACD00D26A72 /* CompleteProfileController.m */,
+				4A1B17502089CACD00D26A72 /* shoppingCell.h */,
+				4A1B17552089CACD00D26A72 /* shoppingCell.m */,
+				4A1B174E2089CACC00D26A72 /* shoppingCell.xib */,
+				4A1B17512089CACD00D26A72 /* ShoppingListModel.h */,
+				4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */,
+				4A1B17532089CACD00D26A72 /* ShoppingListViewController.h */,
+				4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */,
+			);
+			path = CEFDemo;
+			sourceTree = "<group>";
+		};
 		4A9B528920073344008F09B1 /* SocialManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -170,6 +203,7 @@
 		4ACC66ED200358790087D995 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				4A1B174C2089CAAD00D26A72 /* CEFDemo */,
 				4ACC66EE200358790087D995 /* AppDelegate.h */,
 				4ACC66EF200358790087D995 /* AppDelegate.m */,
 				4ACC66F1200358790087D995 /* ViewController.h */,
@@ -292,8 +326,10 @@
 				4ACC66FB200358790087D995 /* LaunchScreen.storyboard in Resources */,
 				4ACC66F8200358790087D995 /* Assets.xcassets in Resources */,
 				4ACC6727200477480087D995 /* WeiboSDK.bundle in Resources */,
+				4A1B175A2089CACD00D26A72 /* CompleteProfile.storyboard in Resources */,
 				4ACC670B200358DC0087D995 /* README.txt in Resources */,
 				4ACC66F6200358790087D995 /* Main.storyboard in Resources */,
+				4A1B17582089CACD00D26A72 /* shoppingCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,11 +342,15 @@
 			files = (
 				4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */,
 				4ACC674B2005E3410087D995 /* WechatManager.m in Sources */,
+				4A1B175B2089CACD00D26A72 /* ShoppingListViewController.m in Sources */,
+				4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */,
 				4ACC67482005DD540087D995 /* SocialManager.m in Sources */,
+				4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
 				4ACC66FE200358790087D995 /* main.m in Sources */,
 				4ACC675120061F0C0087D995 /* QQManager.m in Sources */,
 				4ACC66F0200358790087D995 /* AppDelegate.m in Sources */,
+				4A1B175C2089CACD00D26A72 /* shoppingCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

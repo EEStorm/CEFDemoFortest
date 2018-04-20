@@ -34,7 +34,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.microsoft.Authentication</string>
+			<string>com.microsoft.CEFDemo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb2161062029</string>
