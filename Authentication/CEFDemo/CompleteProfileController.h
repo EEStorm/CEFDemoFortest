@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface CompleteProfileController : UIViewController
+@interface CompleteProfileController : UIViewController<UIGestureRecognizerDelegate>
+
+@property(nonatomic,strong)NSString *type;
 
 @end

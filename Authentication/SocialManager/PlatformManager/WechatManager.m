@@ -23,14 +23,14 @@
         NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"WX_ACCESS_TOKEN"];
         NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"WX_OPEN_ID"];
        
-//        if (accessToken && openID) {
-//
-//            [self wechatRefreshToken:appkey];
-//
-//        }else {
+        if (accessToken && openID) {
+
+            [self wechatRefreshToken:appkey];
+
+        }else {
         
             [self wechatLogin:appkey];
-//        }
+        }
         
     }else{
         //把微信登录的按钮隐藏掉。

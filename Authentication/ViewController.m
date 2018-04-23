@@ -1,62 +1,3 @@
-//
-//  ViewController.m
-//  Authentication
-//
-//  Created by zhangDongdong on 2018/1/8.
-//  Copyright © 2018年 micorosoft. All rights reserved.
-//
-
-//#import "ViewController.h"
-//#import "AppDelegate.h"
-//
-//
-//
-//@interface ViewController ()
-//{
-//    AppDelegate *appdelegate;
-////    WeixinPayHelper *helper;
-//}
-//@end
-//
-//
-//
-//@implementation ViewController
-//
-//- (void)viewDidLoad {
-//    [super viewDidLoad];
-//    // Do any additional setup after loading the view, typically from a nib.
-//}
-//- (IBAction)wechatbtn:(id)sender {
-//
-//    [[SocialManager defaultManager]getUserInfoWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
-//
-//         NSLog(@"%@",result);
-//
-//    }];
-//
-//}
-//- (IBAction)weibobtn:(id)sender {
-//
-//    [[SocialManager defaultManager]getUserInfoWithPlatform:weibo completion:^(NSDictionary *result, NSInteger *error) {
-//
-//        NSLog(@"%@",result);
-//
-//    }];
-//}
-//- (IBAction)QQLoginbtn:(id)sender {
-//
-//    [[SocialManager defaultManager]getUserInfoWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
-//
-//        NSLog(@"%@",result);
-//
-//    }];
-//
-//}
-//
-//
-//@end
-
-
 
 
 //
@@ -69,6 +10,8 @@
 
 #import "ViewController.h"
 #import "ShoppingListViewController.h"
+#import "CompleteProfileController.h"
+
 #define SHColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
 @interface ViewController ()<UITextFieldDelegate>
@@ -116,22 +59,15 @@
 }
 - (IBAction)registerViewBtnClick:(id)sender {
     
-    UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
-    CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
-    
-    [self presentViewController:profileController animated:0.3 completion:^{
-        [self clickLoginBtn];
-    }];
-    //    [self presentModalViewController:ickImageViewController animated:YES];
-    //返回
-    //    [self dismissModalViewControllerAnimated:YES];
+    ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+    [self.navigationController pushViewController:shoppingVC animated:true];
 }
 - (IBAction)weixinLogin:(id)sender {
     
     [[SocialManager defaultManager]getUserInfoWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
 
          NSLog(@"%@",result);
-        [self presentCompleteVC];
+        [self presentCompleteVC:@"weixin"];
     }];
 }
 
@@ -140,7 +76,7 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
 
         NSLog(@"%@",result);
-        [self presentCompleteVC];
+        [self presentCompleteVC:@"QQ"];
 
     }];
 }
@@ -151,17 +87,17 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:weibo completion:^(NSDictionary *result, NSInteger *error) {
         
         NSLog(@"%@",result);
-        [self presentCompleteVC];
+        [self presentCompleteVC:@"weibo"];
     }];
 }
 
 
 
--(void)presentCompleteVC {
+-(void)presentCompleteVC:(NSString *)type {
     
     UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
     CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
-    
+    profileController.type = type;
     [self presentViewController:profileController animated:0.3 completion:^{
         [self clickLoginBtn];
     }];
@@ -176,7 +112,14 @@
     
     [self registerDelegate];
 }
+-(void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+    
+}
 
+-(void)viewDidDisappear:(BOOL)animated {
+    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
+}
 -(void)registerDelegate{
     
     self.loginView_phoneNumber.delegate = self;
@@ -211,7 +154,7 @@
     self.registerView_comfirmPassword.text = @"";
     
     self.registerView_registerBtnClick.backgroundColor = [UIColor lightGrayColor];
-    self.registerView_registerBtnClick.enabled = false;
+    self.registerView_registerBtnClick.enabled = true;
 }
 
 

@@ -171,6 +171,11 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="4eq-5h-Y7j"/>
                     </view>
+                    <connections>
+                        <outlet property="emailFeild" destination="hxj-t5-x5B" id="LLi-1C-hlU"/>
+                        <outlet property="phonenumberFeild" destination="MdS-G4-gRz" id="J9k-fq-cfj"/>
+                        <outlet property="usernameFeild" destination="iJq-IV-CxQ" id="1fK-2U-V4x"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IjH-if-25T" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

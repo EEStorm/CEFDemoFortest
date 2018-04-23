@@ -8,33 +8,49 @@
 
 #import "ShoppingListViewController.h"
 #import "shoppingCell.h"
+#import "ShoppingListModel.h"
 
 @interface ShoppingListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
 @property(nonatomic,strong)UITableView* tableview;
-@property(nonatomic,strong)NSArray* data;
+@property(nonatomic,strong)NSArray* dataArray;
 
 @end
 
 @implementation ShoppingListViewController
+
+
+
+- (NSArray *)dataArray {
+    if (nil == _dataArray) {
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"shopping.plist" ofType:nil];
+        NSArray *tempArray = [NSArray arrayWithContentsOfFile:path];
+        NSMutableArray *mutable = [NSMutableArray array];
+        for (NSDictionary *dict in tempArray) {
+            ShoppingListModel *model = [ShoppingListModel weiboModelWithDict:dict];
+            [mutable addObject:model];
+        }
+        _dataArray = mutable;
+    }
+    return _dataArray;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     [self setupUI];
     
-    self.data = @[@"xxx",@"xx",@"xxx",@"xxx",@"xxxx",@"xxx",
-             @"xxx",@"xxx",@"xxx"];
 }
 
 
 -(void)setupUI{
     
     self.view.backgroundColor = [UIColor whiteColor];
-    self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 120, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height) style:UITableViewStyleGrouped];
-    self.tableview.backgroundColor = [UIColor greenColor];
+    self.tableview = [[UITableView alloc]initWithFrame:CGRectMake(0, 44, UIScreen.mainScreen.bounds.size.width, UIScreen.mainScreen.bounds.size.height-44) style:UITableViewStylePlain];
+    self.tableview.backgroundColor = [UIColor clearColor];
     self.tableview.delegate = self;
     self.tableview.dataSource = self;
+    self.tableview.rowHeight = 150;
     
 //    tableviewregister(UINib.init(nibName: "shoppingCell", bundle: nil), forCellReuseIdentifier: ticketIdentifier)
     [self.tableview registerNib:[UINib nibWithNibName:@"shoppingCell" bundle:nil]  forCellReuseIdentifier:@"shoppingCell"];
@@ -54,13 +70,12 @@
     shoppingCell *cell = [tableView
                              dequeueReusableCellWithIdentifier:CellIdentifier
                              forIndexPath:indexPath];
-    NSString *name = self.data[indexPath.row];
-    cell.textLabel.text = name;
+    cell.shoppingModel = self.dataArray[indexPath.row];
     return cell;
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return self.data.count;
+    return self.dataArray.count;
 }
 /*
 #pragma mark - Navigation

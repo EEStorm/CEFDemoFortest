@@ -7,7 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ShoppingListModel.h"
 
 @interface shoppingCell : UITableViewCell
+
+@property (weak, nonatomic) IBOutlet UILabel *cellContent;
+@property (weak, nonatomic) IBOutlet UILabel *celltitle;
+
+@property (weak, nonatomic) IBOutlet UIImageView *imagepc;
+
+@property (weak, nonatomic) IBOutlet UIImageView *price;
+@property(nonatomic,strong)ShoppingListModel *shoppingModel;
 
 @end

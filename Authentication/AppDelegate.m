@@ -10,6 +10,7 @@
 #import "WXApi.h"
 #import "WeiboSDK.h"
 #import "SocialManager.h"
+#import "CEFService.h"
 
 //微信开发者ID
 #define URL_APPID @"wx0a6553c087c9e3ea"
@@ -21,7 +22,7 @@
 #define QQ_APPID @"1105567034"
 #define QQ_SECRET @"i9u9zTaunPX7JIzM"
 
-@interface AppDelegate ()<TencentSessionDelegate>
+@interface AppDelegate ()
 
 @end
 
@@ -31,6 +32,35 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+//
+    
+    NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    if (EID) {
+        [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
+            
+            //        NSLog(@"%@",dict);
+        } successCompletion:^{
+            
+        } failedCompletion:^{
+            
+        }];
+    }else {
+        [CEFService createEIDwithTags:@[@"Beijing"] customId:@"storm" EID:^(NSString *EID) {
+            
+            [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
+            
+            [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
+                
+                //        NSLog(@"%@",dict);
+            } successCompletion:^{
+                
+            } failedCompletion:^{
+                
+            }];
+        }];
+    }
+    
+    
     [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil];
     
     [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"http://www.baidu.com"];

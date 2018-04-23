@@ -18,19 +18,23 @@
 }
 
 -(void)sendReqWithAppkey:(NSString *)appkey redirectURL:(NSString *)redirectURL {
-    
-    
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_ACCESS_TOKEN"];
-    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"QQ_OPEN_ID"];
-    
-//    if (accessToken && openID) {
-//
-//        [_tencentOAuth getUserInfo];
-//
-//    }else {
-    
+    if (_tencentOAuth.accessToken) {
+        
+        //获取用户信息。 调用这个方法后，qq的sdk会自动调用
+        //- (void)getUserInfoResponse:(APIResponse*) response
+        
+        [_tencentOAuth getUserInfo];
+        
+        NSString *accessToken = _tencentOAuth.accessToken;
+        if (accessToken && (![accessToken isEqual: @""])) {
+            
+            [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
+        }
+    }else{
+        
+        NSLog(@"accessToken 没有获取成功");
         [self QQLogin];
-//    }
+    }
     
 }
 
@@ -49,6 +53,12 @@
         //- (void)getUserInfoResponse:(APIResponse*) response
         
         [_tencentOAuth getUserInfo];
+        
+        NSString *accessToken = _tencentOAuth.accessToken;
+        if (accessToken && (![accessToken isEqual: @""])) {
+            
+            [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
+        }
     }else{
         
         NSLog(@"accessToken 没有获取成功");
@@ -144,16 +154,10 @@
  * 获取用户个人信息回调
  */
 - (void)getUserInfoResponse:(APIResponse*) response{
-    NSLog(@" response %@",response);
+    NSLog(@" response %@",response.userData);
     NSLog(@" response %@",response.jsonResponse);
     
-    NSString *accessToken = response.jsonResponse[@"access_token"];
-    NSString *openId = response.jsonResponse[@"openid"];
-    if (accessToken && (![accessToken isEqual: @""])&& openId && ![openId isEqual: @""]) {
-        
-        [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
-        [[NSUserDefaults standardUserDefaults]setObject:openId forKey:@"QQ_OPEN_ID"];
-    }
+   
     self.completion(response.jsonResponse, 0);
     
 }

@@ -7,8 +7,12 @@
 //
 
 #import "CompleteProfileController.h"
+#import "CEFService.h"
 
 @interface CompleteProfileController ()
+@property (weak, nonatomic) IBOutlet UITextField *usernameFeild;
+@property (weak, nonatomic) IBOutlet UITextField *phonenumberFeild;
+@property (weak, nonatomic) IBOutlet UITextField *emailFeild;
 
 @end
 
@@ -17,6 +21,35 @@
 
 - (IBAction)completeBtnClick:(id)sender {
     
+    
+    NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cefsfcluster.chinanorth.cloudapp.chinacloudapi.cn/users/%@/serviceproviders/authentication",EID]];
+    
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    
+    NSDictionary *dictPramas = @{@"channel":@"Any",
+                                 @"properties":@{
+                                                @"username":self.usernameFeild.text,
+                                                @"phone":self.phonenumberFeild.text,
+                                                @"email":self.emailFeild.text,
+                                                @"socialProfile":self.type
+                                                }
+                                 };
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
+    request.HTTPBody = data;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+        NSLog(@"%@",dict);
+//        profile(dict);
+    }];
+    
+    [sessionDataTask resume];
+    
     [self dismissViewControllerAnimated:true completion:nil];
 }
 
@@ -24,21 +57,24 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.hidden = true;
+    
+    self.navigationController.interactivePopGestureRecognizer.delegate = self;
+    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated {
+    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
+}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

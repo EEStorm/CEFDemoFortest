@@ -7,6 +7,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,21 +22,81 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="szn-TH-DFO">
-                        <rect key="frame" x="0.0" y="0.0" width="148.5" height="148.5"/>
-                        <color key="backgroundColor" red="1" green="0.72549019609999998" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="10" y="10" width="128.5" height="128.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="szn-TH-DFO" secondAttribute="height" id="AbT-NI-mXM"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zef-QR-kNO">
+                        <rect key="frame" x="152.5" y="14" width="266.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="0zx-ys-bzn"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V4T-0l-bko">
+                        <rect key="frame" x="155.5" y="39" width="243.5" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="VSs-4f-pML"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Fb4-lX-Vda">
+                        <rect key="frame" x="152.5" y="118.5" width="100" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="100" id="5xe-4q-aDU"/>
+                            <constraint firstAttribute="height" constant="15" id="Und-Iy-b3U"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="shopping_cart" translatesAutoresizingMaskIntoConstraints="NO" id="hrn-s1-RRm">
+                        <rect key="frame" x="373" y="106" width="30" height="30"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="30" id="MkB-Ud-wZM"/>
+                            <constraint firstAttribute="width" constant="30" id="obY-Qv-peo"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="freshtry" translatesAutoresizingMaskIntoConstraints="NO" id="tuq-xs-bvx">
+                        <rect key="frame" x="155.5" y="66" width="71" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="15" id="DPg-6X-6dC"/>
+                            <constraint firstAttribute="width" secondItem="tuq-xs-bvx" secondAttribute="height" multiplier="85:18" id="Hn1-ty-cVS"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="szn-TH-DFO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="emY-hS-51a"/>
-                    <constraint firstItem="szn-TH-DFO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="lcO-iI-3gD"/>
-                    <constraint firstAttribute="bottom" secondItem="szn-TH-DFO" secondAttribute="bottom" id="sDN-rl-3eo"/>
+                    <constraint firstAttribute="trailing" secondItem="hrn-s1-RRm" secondAttribute="trailing" constant="20" id="0Cz-J8-mgz"/>
+                    <constraint firstItem="V4T-0l-bko" firstAttribute="top" secondItem="Zef-QR-kNO" secondAttribute="bottom" constant="4" id="12f-9u-2zh"/>
+                    <constraint firstItem="Fb4-lX-Vda" firstAttribute="leading" secondItem="szn-TH-DFO" secondAttribute="trailing" constant="14" id="2sN-0R-WMp"/>
+                    <constraint firstAttribute="bottom" secondItem="Fb4-lX-Vda" secondAttribute="bottom" constant="15" id="AUk-fT-xKA"/>
+                    <constraint firstItem="V4T-0l-bko" firstAttribute="leading" secondItem="szn-TH-DFO" secondAttribute="trailing" constant="17" id="CIF-vo-8nq"/>
+                    <constraint firstAttribute="trailing" secondItem="Zef-QR-kNO" secondAttribute="trailing" constant="4" id="H5K-9y-B0v"/>
+                    <constraint firstAttribute="bottom" secondItem="hrn-s1-RRm" secondAttribute="bottom" constant="12.5" id="OXZ-PK-oSm"/>
+                    <constraint firstItem="tuq-xs-bvx" firstAttribute="top" secondItem="V4T-0l-bko" secondAttribute="bottom" constant="6" id="db0-Pl-FIh"/>
+                    <constraint firstItem="Zef-QR-kNO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="14" id="efN-w1-JeB"/>
+                    <constraint firstItem="szn-TH-DFO" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="emY-hS-51a"/>
+                    <constraint firstItem="Zef-QR-kNO" firstAttribute="leading" secondItem="szn-TH-DFO" secondAttribute="trailing" constant="14" id="j4O-lV-w5M"/>
+                    <constraint firstItem="szn-TH-DFO" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="lcO-iI-3gD"/>
+                    <constraint firstItem="tuq-xs-bvx" firstAttribute="leading" secondItem="szn-TH-DFO" secondAttribute="trailing" constant="17" id="rT0-8S-4Ns"/>
+                    <constraint firstAttribute="bottom" secondItem="szn-TH-DFO" secondAttribute="bottom" constant="10" id="sDN-rl-3eo"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="V4T-0l-bko" secondAttribute="trailing" constant="4" id="v2B-br-SIT"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="aW0-zy-SZf"/>
+            <connections>
+                <outlet property="cellContent" destination="V4T-0l-bko" id="3hw-IJ-eec"/>
+                <outlet property="celltitle" destination="Zef-QR-kNO" id="RKq-Ua-Yic"/>
+                <outlet property="imagepc" destination="szn-TH-DFO" id="grZ-2J-W4d"/>
+                <outlet property="price" destination="Fb4-lX-Vda" id="F9c-yH-OZh"/>
+            </connections>
             <point key="canvasLocation" x="31.5" y="103.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="freshtry" width="85" height="18"/>
+        <image name="shopping_cart" width="44" height="44"/>
+    </resources>
 </document>
