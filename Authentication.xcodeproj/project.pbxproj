@@ -46,6 +46,8 @@
 		4ACC675120061F0C0087D995 /* QQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC675020061F0C0087D995 /* QQManager.m */; };
 		4AD4F813208D7DC40091F793 /* CEFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F812208D7DC30091F793 /* CEFService.m */; };
 		4AD4F816208DB7780091F793 /* shopping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F815208DB7780091F793 /* shopping.plist */; };
+		4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */; };
+		4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -107,6 +109,9 @@
 		4AD4F812208D7DC30091F793 /* CEFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEFService.m; sourceTree = "<group>"; };
 		4AD4F814208D89830091F793 /* Authentication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Authentication.entitlements; sourceTree = "<group>"; };
 		4AD4F815208DB7780091F793 /* shopping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shopping.plist; sourceTree = "<group>"; };
+		4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentPageViewController.h; sourceTree = "<group>"; };
+		4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentPageViewController.m; sourceTree = "<group>"; };
+		4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentPage.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +157,9 @@
 				4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */,
 				4A1B17532089CACD00D26A72 /* ShoppingListViewController.h */,
 				4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */,
+				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
+				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
+				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
 			);
 			path = CEFDemo;
 			sourceTree = "<group>";
@@ -344,6 +352,7 @@
 				4ACC66FB200358790087D995 /* LaunchScreen.storyboard in Resources */,
 				4ACC66F8200358790087D995 /* Assets.xcassets in Resources */,
 				4ACC6727200477480087D995 /* WeiboSDK.bundle in Resources */,
+				4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */,
 				4AD4F816208DB7780091F793 /* shopping.plist in Resources */,
 				4A1B175A2089CACD00D26A72 /* CompleteProfile.storyboard in Resources */,
 				4ACC670B200358DC0087D995 /* README.txt in Resources */,
@@ -365,6 +374,7 @@
 				4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */,
 				4ACC67482005DD540087D995 /* SocialManager.m in Sources */,
 				4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */,
+				4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
 				4ACC66FE200358790087D995 /* main.m in Sources */,
 				4ACC675120061F0C0087D995 /* QQManager.m in Sources */,

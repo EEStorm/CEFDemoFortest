@@ -103,6 +103,10 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" keyboardType="numberPad" returnKeyType="done"/>
                                     </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="191-du-B1A">
+                                        <rect key="frame" x="164" y="155" width="46" height="30"/>
+                                        <state key="normal" title="Button"/>
+                                    </button>
                                     <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-Os-NmM">
                                         <rect key="frame" x="20" y="90" width="335" height="30"/>
                                         <nil key="textColor"/>
@@ -147,15 +151,19 @@
                                     <constraint firstAttribute="trailing" secondItem="epi-hI-H6n" secondAttribute="trailing" constant="20" id="9W5-Ka-tUj"/>
                                     <constraint firstItem="gdk-4U-4wy" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="20" id="MGg-X0-iSt"/>
                                     <constraint firstAttribute="trailing" secondItem="05g-G9-cBM" secondAttribute="trailing" constant="7" id="OlU-ru-Wto"/>
+                                    <constraint firstAttribute="trailing" secondItem="191-du-B1A" secondAttribute="trailing" constant="165" id="Oon-Sl-DQ2"/>
                                     <constraint firstItem="VkN-oR-w6U" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="20" id="PUZ-10-Su0"/>
                                     <constraint firstItem="DAc-Os-NmM" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="20" id="UEg-Jc-K9e"/>
                                     <constraint firstItem="gdk-4U-4wy" firstAttribute="top" secondItem="epi-hI-H6n" secondAttribute="bottom" constant="44" id="UPw-2c-lkO"/>
                                     <constraint firstItem="DAc-Os-NmM" firstAttribute="top" secondItem="iqf-gh-rEv" secondAttribute="bottom" constant="10" id="V7H-cx-aZY"/>
+                                    <constraint firstItem="191-du-B1A" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="164" id="ZGM-d8-hzr"/>
                                     <constraint firstItem="epi-hI-H6n" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="20" id="a7o-fD-EFg"/>
                                     <constraint firstItem="epi-hI-H6n" firstAttribute="top" secondItem="DAc-Os-NmM" secondAttribute="bottom" constant="10" id="cno-ND-DsV"/>
                                     <constraint firstAttribute="trailing" secondItem="gdk-4U-4wy" secondAttribute="trailing" constant="20" id="dLd-n7-BOy"/>
+                                    <constraint firstItem="191-du-B1A" firstAttribute="top" secondItem="DAc-Os-NmM" secondAttribute="bottom" constant="35" id="gg0-jX-uiG"/>
                                     <constraint firstItem="VkN-oR-w6U" firstAttribute="top" secondItem="gdk-4U-4wy" secondAttribute="bottom" constant="10" id="lEN-MI-hok"/>
                                     <constraint firstAttribute="trailing" secondItem="iqf-gh-rEv" secondAttribute="trailing" constant="20" id="mMv-yL-Z0H"/>
+                                    <constraint firstItem="gdk-4U-4wy" firstAttribute="top" secondItem="191-du-B1A" secondAttribute="bottom" constant="19" id="mrU-hQ-xGb"/>
                                     <constraint firstItem="3vK-Jg-O4J" firstAttribute="leading" secondItem="ApW-Yl-7QG" secondAttribute="leading" constant="20" id="qGj-IT-dUX"/>
                                     <constraint firstItem="iqf-gh-rEv" firstAttribute="top" secondItem="3vK-Jg-O4J" secondAttribute="bottom" constant="10" id="qW6-qg-vzG"/>
                                     <constraint firstItem="05g-G9-cBM" firstAttribute="top" secondItem="ApW-Yl-7QG" secondAttribute="top" id="qas-wb-5b3"/>

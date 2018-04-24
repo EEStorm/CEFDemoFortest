@@ -9,6 +9,7 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 #import "ShoppingListViewController.h"
 #import "CompleteProfileController.h"
 
@@ -60,7 +61,12 @@
 - (IBAction)registerViewBtnClick:(id)sender {
     
     ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
-    [self.navigationController pushViewController:shoppingVC animated:true];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    UIViewController *vc = app.window.rootViewController;
+    app.window.rootViewController = nav;
+    [vc removeFromParentViewController];
 }
 - (IBAction)weixinLogin:(id)sender {
     

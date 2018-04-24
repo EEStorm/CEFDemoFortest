@@ -57,20 +57,9 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
-    self.navigationController.navigationBar.hidden = true;
-    
-    self.navigationController.interactivePopGestureRecognizer.delegate = self;
-    self.navigationController.interactivePopGestureRecognizer.enabled = YES;
-}
-
--(void)viewWillAppear:(BOOL)animated {
-    [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
     
 }
 
--(void)viewDidDisappear:(BOOL)animated {
-    [self.navigationController.view bringSubviewToFront:self.navigationController.navigationBar];
-}
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
