@@ -165,6 +165,10 @@
 	</dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>App需要您的同意,才能访问相册</string>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>remote-notification</string>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

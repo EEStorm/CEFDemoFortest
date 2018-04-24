@@ -10,13 +10,13 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 
-typedef void(^Completion)(NSDictionary *result, NSInteger *error);
+typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 @interface QQManager : NSObject<TencentSessionDelegate>
 
 @property(strong,nonatomic)TencentOAuth *tencentOAuth;
 
-@property(copy,nonatomic)Completion completion;
+@property(copy,nonatomic)SocialCompletion completion;
 
 
 -(void)sendReqWithAppkey:(NSString *)appkey redirectURL:(NSString *)redirectURL;

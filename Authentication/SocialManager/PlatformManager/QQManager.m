@@ -18,23 +18,23 @@
 }
 
 -(void)sendReqWithAppkey:(NSString *)appkey redirectURL:(NSString *)redirectURL {
-    if (_tencentOAuth.accessToken) {
-        
-        //获取用户信息。 调用这个方法后，qq的sdk会自动调用
-        //- (void)getUserInfoResponse:(APIResponse*) response
-        
-        [_tencentOAuth getUserInfo];
-        
-        NSString *accessToken = _tencentOAuth.accessToken;
-        if (accessToken && (![accessToken isEqual: @""])) {
-            
-            [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
-        }
-    }else{
-        
-        NSLog(@"accessToken 没有获取成功");
+//    if (_tencentOAuth.accessToken) {
+//
+//        //获取用户信息。 调用这个方法后，qq的sdk会自动调用
+//        //- (void)getUserInfoResponse:(APIResponse*) response
+//
+//        [_tencentOAuth getUserInfo];
+//
+//        NSString *accessToken = _tencentOAuth.accessToken;
+//        if (accessToken && (![accessToken isEqual: @""])) {
+//
+//            [[NSUserDefaults standardUserDefaults]setObject:accessToken forKey:@"QQ_ACCESS_TOKEN"];
+//        }
+//    }else{
+//
+//        NSLog(@"accessToken 没有获取成功");
         [self QQLogin];
-    }
+//    }
     
 }
 

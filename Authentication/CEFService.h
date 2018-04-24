@@ -15,7 +15,7 @@
 
 
 
-typedef void(^NotiCompletion)(void);
+typedef void(^Completion)(void);
 typedef void (^GetEID)(NSString*);;
 typedef void(^Profile)(NSDictionary*);
 
@@ -23,21 +23,22 @@ static NSArray *Tags;
 static NSString *CustomId;
 static NSString *EId;
 
-@interface CEFService : NSObject 
+@interface CEFService : NSObject
 
-@property(copy,nonatomic)NotiCompletion successCompletion;
-@property(copy,nonatomic)NotiCompletion failedCompletion;
+@property(copy,nonatomic)Completion successCompletion;
+@property(copy,nonatomic)Completion failedCompletion;
 @property(copy,nonatomic)GetEID eidStr;
 @property(copy,nonatomic)Profile profile;
 
 @property (nonatomic, assign) NSString * EID;
 
 +(NSString *)createEIDwithTags:(NSArray*)tags customId:(NSString*)customId EID:(GetEID)eidStr;
-    
-+(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(NotiCompletion)successCompletion failedCompletion:(NotiCompletion)failedCompletion;
+
++(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
 
 +(void)registerDeviceToken:(NSData *)deviceToken profile:(Profile)profile;
 
 +(void)getContent:(UNNotificationContent*)content;
 
 @end
+

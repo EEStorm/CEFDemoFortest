@@ -15,11 +15,11 @@
 
 @end
 
-typedef void(^Completion)(NSDictionary *result, NSInteger *error);
+typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 @interface WeiboManager : NSObject<WeiboSDKDelegate,WBDelegate>
 
-@property(copy,nonatomic)Completion completion;
+@property(copy,nonatomic)SocialCompletion completion;
 @property (nonatomic, assign) NSInteger *error;
 @property (nonatomic, weak) id<WBDelegate> wbDelegate;
 

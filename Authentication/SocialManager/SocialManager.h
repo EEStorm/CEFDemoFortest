@@ -29,14 +29,14 @@ typedef enum {
     
 } Platform;
 
-typedef void(^Completion)(NSDictionary *result, NSInteger *error);
+typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 
 
 @interface SocialManager : NSObject<WXApiDelegate>
 
 
-@property(copy,nonatomic)Completion completion;
+@property(copy,nonatomic)SocialCompletion completion;
 
 
 #pragma mark - 微信
@@ -64,7 +64,7 @@ typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 
 -(void)setPlaform:(Platform)platform appkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL;
 
--(void)getUserInfoWithPlatform:(Platform)platform completion:(Completion)completion;
+-(void)getUserInfoWithPlatform:(Platform)platform completion:(SocialCompletion)completion;
 
 -(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options;
 

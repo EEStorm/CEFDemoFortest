@@ -12,6 +12,7 @@
 #import "AppDelegate.h"
 #import "ShoppingListViewController.h"
 #import "CompleteProfileController.h"
+#import "MBProgressHUD.h"
 
 #define SHColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
@@ -54,24 +55,56 @@
 }
 
 - (IBAction)loginViewBtnClick:(id)sender {
-    ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
     
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UIViewController *vc = app.window.rootViewController;
-    app.window.rootViewController = nav;
-    [vc removeFromParentViewController];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    NSString *username = [defaults objectForKey:@"USER"];
+    NSString *password = [defaults objectForKey:@"PASSWORD"];
+    
+    if ([username isEqualToString:self.loginView_phoneNumber.text] && [password isEqualToString:self.loginView_password.text]) {
+        
+        ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = nav;
+        [vc removeFromParentViewController];
+    } else {
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"账号或密码错误";
+        hud.offset = CGPointMake(0.f, 100);
+        [hud hideAnimated:YES afterDelay:2.f];
+    }
+    
     
 }
 - (IBAction)registerViewBtnClick:(id)sender {
     
-    ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
-    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
-    
-    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-    UIViewController *vc = app.window.rootViewController;
-    app.window.rootViewController = nav;
-    [vc removeFromParentViewController];
+    if ([self.registerView_password.text isEqualToString:self.registerView_comfirmPassword.text]) {
+        
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        NSString *phoneNum = self.registerView_phoneNumber.text;
+        NSString *password = self.registerView_password.text;
+        [defaults setObject:phoneNum forKey:@"USER"];
+        [defaults setObject:password forKey:@"PASSWORD"];
+        
+        ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = nav;
+        [vc removeFromParentViewController];
+    }else {
+        
+        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+        hud.mode = MBProgressHUDModeText;
+        hud.label.text = @"输入密码不一致";
+        hud.offset = CGPointMake(0.f, 100);
+        [hud hideAnimated:YES afterDelay:2.f];
+
+    }
 }
 - (IBAction)weixinLogin:(id)sender {
     
@@ -106,12 +139,28 @@
 
 -(void)presentCompleteVC:(NSString *)type {
     
-    UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
-    CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
-    profileController.type = type;
-    [self presentViewController:profileController animated:0.3 completion:^{
-        [self clickLoginBtn];
-    }];
+    BOOL islogin = [[NSUserDefaults standardUserDefaults]boolForKey:@"ISLOGIN"];
+    
+    if (islogin) {
+        
+        ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = nav;
+        [vc removeFromParentViewController];
+    }else {
+        
+        UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
+        CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
+        profileController.type = type;
+        [self presentViewController:profileController animated:0.3 completion:^{
+            [self clickLoginBtn];
+        }];
+    }
+    
+    
 }
 
 

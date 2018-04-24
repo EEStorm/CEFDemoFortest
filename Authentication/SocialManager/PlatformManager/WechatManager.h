@@ -18,7 +18,7 @@
 
 @end
 
-typedef void(^Completion)(NSDictionary *result, NSInteger *error);
+typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 @interface WechatManager : NSObject<WXApiDelegate,WXDelegate>
 
@@ -28,7 +28,7 @@ typedef void(^Completion)(NSDictionary *result, NSInteger *error);
 @property (nonatomic, assign) NSString * appsecret;
 @property (nonatomic, assign) NSDictionary * result;
 @property (nonatomic, assign) NSInteger *error;
-@property(copy,nonatomic)Completion completion;
+@property(copy,nonatomic)SocialCompletion completion;
 
 -(void)registWXSDKwithAppkey:(NSString *)appkey appSecret:(NSString *)appSecret;
 -(void)sendReqWithAppkey:(NSString*)appkey ;

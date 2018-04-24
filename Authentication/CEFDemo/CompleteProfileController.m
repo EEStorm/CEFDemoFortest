@@ -25,7 +25,7 @@
 
 - (IBAction)completeBtnClick:(id)sender {
     
-    
+    [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"ISLOGIN"];
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cefsfcluster.chinanorth.cloudapp.chinacloudapi.cn/users/%@/serviceproviders/authentication",EID]];

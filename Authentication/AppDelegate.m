@@ -22,6 +22,10 @@
 #define QQ_APPID @"1105567034"
 #define QQ_SECRET @"i9u9zTaunPX7JIzM"
 
+#ifdef NSFoundationVersionNumber_iOS_9_x_Max
+#import <UserNotifications/UserNotifications.h>
+#endif
+
 @interface AppDelegate ()
 
 @end
@@ -37,29 +41,29 @@
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     if (EID) {
         [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
-            
+
             //        NSLog(@"%@",dict);
         } successCompletion:^{
-            
+
         } failedCompletion:^{
-            
+
         }];
     }else {
         [CEFService createEIDwithTags:@[@"Beijing"] customId:@"storm" EID:^(NSString *EID) {
-            
+
             [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
-            
+
             [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
-                
+
                 //        NSLog(@"%@",dict);
             } successCompletion:^{
-                
+
             } failedCompletion:^{
-                
+
             }];
         }];
     }
-    
+
     
     [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil];
     
@@ -87,6 +91,58 @@
 //}
 
 
+#pragma mark - iOS10 收到通知（本地和远端） UNUserNotificationCenterDelegate
+
+//App处于前台接收通知时
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler{
+    
+    UNNotificationRequest *request = notification.request;
+    UNNotificationContent *content = request.content;
+    [CEFService getContent:content];
+    
+    // 提醒用户，有Badge、Sound、Alert三种类型可以设置
+    completionHandler(UNNotificationPresentationOptionBadge|
+                      UNNotificationPresentationOptionSound|
+                      UNNotificationPresentationOptionAlert);
+    
+}
+
+
+//App通知的点击事件
+- (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)(void))completionHandler{
+    
+    UNNotificationRequest *request = response.notification.request;
+    UNNotificationContent *content = request.content;
+    [CEFService getContent:content];
+    
+    completionHandler(); // 系统要求执行这个方法
+}
+
+
+#pragma mark -iOS 10之前收到通知
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
+    NSLog(@"iOS6及以下系统，收到通知:%@", userInfo);
+    //此处省略一万行需求代码。。。。。。
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);
+    completionHandler(UIBackgroundFetchResultNewData);
+    //此处省略一万行需求代码。。。。。。
+}
+
+
+#pragma  mark - 获取device Token
+//获取DeviceToken成功
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
+    
+    
+    [CEFService registerDeviceToken:deviceToken profile:^(NSDictionary *profile) {
+        NSLog(@"%@",profile);
+    }];
+    
+}
 
 
 

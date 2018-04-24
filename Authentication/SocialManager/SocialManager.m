@@ -41,7 +41,7 @@ static SocialManager *_instance;
     
 }
 
--(void)getUserInfoWithPlatform:(Platform)platform completion:(Completion)completion {
+-(void)getUserInfoWithPlatform:(Platform)platform completion:(SocialCompletion)completion {
     
     if (platform == wechat) {
         

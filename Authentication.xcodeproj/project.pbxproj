@@ -48,6 +48,7 @@
 		4AD4F816208DB7780091F793 /* shopping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F815208DB7780091F793 /* shopping.plist */; };
 		4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */; };
 		4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */; };
+		4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -112,6 +113,8 @@
 		4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentPageViewController.h; sourceTree = "<group>"; };
 		4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PaymentPageViewController.m; sourceTree = "<group>"; };
 		4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentPage.storyboard; sourceTree = "<group>"; };
+		4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -160,6 +163,8 @@
 				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
 				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
 				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
+				4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */,
+				4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */,
 			);
 			path = CEFDemo;
 			sourceTree = "<group>";
@@ -317,10 +322,10 @@
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
-								enabled = 0;
+								enabled = 1;
 							};
 							com.apple.Push = {
-								enabled = 0;
+								enabled = 1;
 							};
 						};
 					};
@@ -381,6 +386,7 @@
 				4ACC66F0200358790087D995 /* AppDelegate.m in Sources */,
 				4AD4F813208D7DC40091F793 /* CEFService.m in Sources */,
 				4A1B175C2089CACD00D26A72 /* shoppingCell.m in Sources */,
+				4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,6 +520,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Authentication/Authentication.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3P2FC5X6P;
@@ -532,7 +539,7 @@
 					"-all_load",
 					"-Objc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.CEFDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.msxiaoyun.NotificationDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -543,6 +550,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Authentication/Authentication.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = E3P2FC5X6P;
@@ -561,7 +569,7 @@
 					"-all_load",
 					"-Objc",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.CEFDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.microsoft.msxiaoyun.NotificationDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";

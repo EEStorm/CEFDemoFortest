@@ -24,8 +24,8 @@
 
 -(void)sendReqWithAppkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL {
     
-    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_ACCESS_TOKEN"];
-    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_USER_ID"];
+//    NSString *accessToken = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_ACCESS_TOKEN"];
+//    NSString *openID = [[NSUserDefaults standardUserDefaults] objectForKey:@"WB_USER_ID"];
 
 //    if (accessToken && openID) {
 //

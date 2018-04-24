@@ -11,7 +11,7 @@
 
 @implementation CEFService
 
-+(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(NotiCompletion)successCompletion failedCompletion:(NotiCompletion)failedCompletion{
++(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion{
     EId = EID;
     NSString *version = [UIDevice currentDevice].systemVersion;
     
@@ -25,7 +25,7 @@
                 //用户点击允许
                 NSLog(@"注册成功");
                 
-//                [self registerNotification:EID Profile:profile withTags:Tags customId:CustomId];
+                //                [self registerNotification:EID Profile:profile withTags:Tags customId:CustomId];
                 successCompletion();
             }else{
                 //用户点击不允许
@@ -48,9 +48,14 @@
     }
     
     //注册远端消息通知获取device token
-//    dispatch_sync(dispatch_get_main_queue(), ^{
-//        [[UIApplication sharedApplication] registerForRemoteNotifications];
-//    });
+    if ([NSThread isMainThread] ){
+         [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }else {
+        
+        dispatch_sync(dispatch_get_main_queue(), ^{
+            [[UIApplication sharedApplication] registerForRemoteNotifications];
+        });
+    }
 }
 
 
@@ -65,7 +70,7 @@
 
 
 +(NSString *)createEIDwithTags:(NSArray *)tags customId:(NSString *)customId EID:(GetEID)eidStr{
-
+    
     CustomId = customId;
     Tags = tags;
     
@@ -107,7 +112,7 @@
                                  };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
     request.HTTPBody = data;
-
+    
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
