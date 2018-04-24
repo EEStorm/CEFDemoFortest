@@ -10,6 +10,8 @@
 #import "shoppingCell.h"
 #import "ShoppingListModel.h"
 #import "PaymentPageViewController.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 
 @interface ShoppingListViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -49,6 +51,11 @@
     UIImageView *personIcon = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"personalIcon"]];
     personIcon.frame = CGRectMake(18, 44, 80, 80);
     
+    personIcon.userInteractionEnabled = YES;
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(logout:)];
+    [personIcon addGestureRecognizer:tapGesture];
+    
+    
     UILabel *personLable = [[UILabel alloc]initWithFrame:CGRectMake(36+80, 44+30, 80, 30)];
     personLable.text = @"李菁";
     [self.view addSubview:personLable];
@@ -66,6 +73,31 @@
     [self.view addSubview:self.tableview];
     
     self.navigationController.delegate = self;
+}
+
+-(void)logout:(UITapGestureRecognizer *)gesture{
+    
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"" message:@"您确定要注销用户么" preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnullaction) {
+        UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *loginVC = [CompleteStoryboard instantiateInitialViewController];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = loginVC;
+        [vc removeFromParentViewController];
+    }];
+    
+    [alertController addAction:cancelAction];
+    
+    [alertController addAction:okAction];
+    
+    [self presentViewController:alertController animated:YES completion:nil];
+    
+
 }
 
 - (void)navigationController:(UINavigationController *)navigationController willShowViewController:(UIViewController *)viewController animated:(BOOL)animated {

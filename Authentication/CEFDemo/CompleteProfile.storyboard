@@ -184,8 +184,10 @@
                         <viewLayoutGuide key="safeArea" id="4eq-5h-Y7j"/>
                     </view>
                     <connections>
+                        <outlet property="cityFeild" destination="3PM-Qg-bGj" id="RJ1-O9-H3c"/>
                         <outlet property="emailFeild" destination="hxj-t5-x5B" id="LLi-1C-hlU"/>
                         <outlet property="phonenumberFeild" destination="MdS-G4-gRz" id="J9k-fq-cfj"/>
+                        <outlet property="sexFeild" destination="5Tl-2e-iQR" id="v2V-9Y-Uye"/>
                         <outlet property="usernameFeild" destination="iJq-IV-CxQ" id="1fK-2U-V4x"/>
                     </connections>
                 </viewController>

@@ -8,11 +8,15 @@
 
 #import "CompleteProfileController.h"
 #import "CEFService.h"
+#import "AppDelegate.h"
+#import "ShoppingListViewController.h"
 
 @interface CompleteProfileController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameFeild;
 @property (weak, nonatomic) IBOutlet UITextField *phonenumberFeild;
 @property (weak, nonatomic) IBOutlet UITextField *emailFeild;
+@property (weak, nonatomic) IBOutlet UITextField *sexFeild;
+@property (weak, nonatomic) IBOutlet UITextField *cityFeild;
 
 @end
 
@@ -50,7 +54,15 @@
     
     [sessionDataTask resume];
     
-    [self dismissViewControllerAnimated:true completion:nil];
+    [self dismissViewControllerAnimated:true completion:^{
+        ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = nav;
+        [vc removeFromParentViewController];
+    }];
 }
 
 - (void)viewDidLoad {
@@ -58,6 +70,19 @@
     // Do any additional setup after loading the view from its nib.
     self.view.backgroundColor = [UIColor whiteColor];
     
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFeild:)];
+    [self.view addGestureRecognizer:tapGesture];
+    
+}
+
+-(void)resignFeild:(UITapGestureRecognizer *)gesture{
+    [self.usernameFeild resignFirstResponder];
+    [self.phonenumberFeild resignFirstResponder];
+    
+    [self.emailFeild resignFirstResponder];
+    [self.cityFeild resignFirstResponder];
+    [self.sexFeild resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {

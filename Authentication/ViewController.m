@@ -55,7 +55,12 @@
 
 - (IBAction)loginViewBtnClick:(id)sender {
     ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
-    [self.navigationController pushViewController:shoppingVC animated:true];
+    UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+    
+    AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+    UIViewController *vc = app.window.rootViewController;
+    app.window.rootViewController = nav;
+    [vc removeFromParentViewController];
     
 }
 - (IBAction)registerViewBtnClick:(id)sender {
@@ -145,6 +150,21 @@
     self.topRegisterBtn.tintColor = [UIColor lightGrayColor];
     self.loginView_loginBtnClick.backgroundColor = [UIColor lightGrayColor];
     self.loginView_loginBtnClick.enabled = false;
+    
+    
+    self.view.userInteractionEnabled = YES;
+    UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFeild:)];
+    [self.view addGestureRecognizer:tapGesture];
+}
+
+-(void)resignFeild:(UITapGestureRecognizer *)gesture{
+    [self.loginView_phoneNumber resignFirstResponder];
+    [self.loginView_password resignFirstResponder];
+    
+    [self.registerView_phoneNumber resignFirstResponder];
+    [self.registerView_verificationCode resignFirstResponder];
+    [self.registerView_password resignFirstResponder];
+    [self.registerView_comfirmPassword resignFirstResponder];
 }
 
 -(void)clickLoginBtn{
