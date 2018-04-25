@@ -24,6 +24,16 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
+			<string>wechatpay</string>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>wxa186d3f0aa51c56e</string>
+			</array>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
+			<key>CFBundleURLName</key>
 			<string>cn.com.infomedia.p3kapp24</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
@@ -34,7 +44,7 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>com.microsoft.CEFDemo</string>
+			<string>com.microsoft.msxiaoyun.NotificationDemo</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wb2161062029</string>

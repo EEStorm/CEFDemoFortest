@@ -86,16 +86,30 @@
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *phoneNum = self.registerView_phoneNumber.text;
         NSString *password = self.registerView_password.text;
+        BOOL islogin = [defaults boolForKey:@"ISLOGIN"];
+        
         [defaults setObject:phoneNum forKey:@"USER"];
         [defaults setObject:password forKey:@"PASSWORD"];
         
-        ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
-        UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
-        
-        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
-        UIViewController *vc = app.window.rootViewController;
-        app.window.rootViewController = nav;
-        [vc removeFromParentViewController];
+        if (islogin) {
+            
+            ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];
+            UINavigationController *nav = [[UINavigationController alloc]initWithRootViewController:shoppingVC];
+            
+            AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+            UIViewController *vc = app.window.rootViewController;
+            app.window.rootViewController = nav;
+            [vc removeFromParentViewController];
+        }else {
+            
+            UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
+            CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
+            profileController.type = @"phone";
+            [self presentViewController:profileController animated:0.3 completion:^{
+                [self clickLoginBtn];
+            }];
+            
+        }
     }else {
         
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];

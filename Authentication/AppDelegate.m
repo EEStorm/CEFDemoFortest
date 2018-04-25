@@ -13,8 +13,8 @@
 #import "CEFService.h"
 
 //微信开发者ID
-#define URL_APPID @"wx0a6553c087c9e3ea"
-#define URL_SECRET @"b55dda0f534a6014dd472442d22a6e29"
+#define URL_APPID @"wxa186d3f0aa51c56e"
+#define URL_SECRET @"7c82bd6a2b1da97d78491a41c4166111"
 
 #define IFM_SinaAPPKey      @"2161062029"
 #define IFM_SinaAppSecret   @"8882ed1ca6c30b9b8794765ec3313a39"
@@ -37,6 +37,7 @@
     // Override point for customization after application launch.
 
 //
+    [CEFPayManager registerPayment];
     
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     if (EID) {

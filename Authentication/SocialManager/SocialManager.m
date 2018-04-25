@@ -61,6 +61,10 @@ static SocialManager *_instance;
 
 -(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
     
+    if ([url.host isEqualToString:@"pay"]) {// 微信
+        return [WXApi handleOpenURL:url delegate:CEFPayManager];
+    }
+    
     if ([options[UIApplicationOpenURLOptionsSourceApplicationKey] isEqualToString:@"com.sina.weibo"]) {
         NSLog(@"新浪微博~");
         
