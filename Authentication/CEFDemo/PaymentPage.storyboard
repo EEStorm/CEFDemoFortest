@@ -284,7 +284,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="cdC-jE-Rtd" firstAttribute="top" secondItem="mv0-DS-8H8" secondAttribute="bottom" constant="25" id="1LN-Yh-u17"/>
-                            <constraint firstItem="BNe-uf-f0i" firstAttribute="top" secondItem="Uyg-Od-131" secondAttribute="bottom" constant="1" id="2Eu-YE-L3d"/>
+                            <constraint firstItem="BNe-uf-f0i" firstAttribute="top" secondItem="9in-zO-haz" secondAttribute="bottom" constant="127" id="2Eu-YE-L3d"/>
                             <constraint firstItem="qrx-dZ-JF0" firstAttribute="top" secondItem="cdC-jE-Rtd" secondAttribute="top" id="3Hs-Zk-Hda"/>
                             <constraint firstItem="IHV-o4-Hi5" firstAttribute="bottom" secondItem="Jhj-Zi-Ejf" secondAttribute="bottom" id="3UI-aG-2EG"/>
                             <constraint firstItem="OrE-Cq-ecn" firstAttribute="centerX" secondItem="oN3-YU-lxq" secondAttribute="centerX" id="3Xx-KN-AyH"/>
@@ -325,6 +325,9 @@
                         <viewLayoutGuide key="safeArea" id="TsE-Z5-sNy"/>
                     </view>
                     <connections>
+                        <outlet property="alipayView" destination="Uyg-Od-131" id="lr4-jL-tZt"/>
+                        <outlet property="unionPayConstant" destination="2Eu-YE-L3d" id="Af6-UA-fV7"/>
+                        <outlet property="unionPayView" destination="BNe-uf-f0i" id="jYh-4S-CGd"/>
                         <outlet property="wexinpay" destination="tGZ-Gr-hW7" id="Vpv-MX-Xil"/>
                     </connections>
                 </viewController>

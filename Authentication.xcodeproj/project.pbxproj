@@ -50,6 +50,8 @@
 		4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */; };
 		4AE46D0A209060BC008435B4 /* XLsn0wPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D08209060BC008435B4 /* XLsn0wPay.m */; };
 		4AE46D0F2090696F008435B4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE46D0E2090696E008435B4 /* libWeChatSDK.a */; };
+		4AE46D142091B532008435B4 /* PaymentSuccessPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */; };
+		4AE46D172091B8D2008435B4 /* PagementSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -119,6 +121,9 @@
 		4AE46D09209060BC008435B4 /* XLsn0wPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLsn0wPay.h; sourceTree = "<group>"; };
 		4AE46D0B20906270008435B4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4AE46D0E2090696E008435B4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
+		4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSuccessPage.storyboard; sourceTree = "<group>"; };
+		4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagementSuccessVC.h; sourceTree = "<group>"; };
+		4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagementSuccessVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,6 +172,9 @@
 				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
 				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
 				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
+				4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */,
+				4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */,
+				4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */,
 				4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */,
 				4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */,
 			);
@@ -363,6 +371,7 @@
 			files = (
 				4ACC66FB200358790087D995 /* LaunchScreen.storyboard in Resources */,
 				4ACC66F8200358790087D995 /* Assets.xcassets in Resources */,
+				4AE46D142091B532008435B4 /* PaymentSuccessPage.storyboard in Resources */,
 				4ACC6727200477480087D995 /* WeiboSDK.bundle in Resources */,
 				4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */,
 				4AD4F816208DB7780091F793 /* shopping.plist in Resources */,
@@ -381,6 +390,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */,
+				4AE46D172091B8D2008435B4 /* PagementSuccessVC.m in Sources */,
 				4ACC674B2005E3410087D995 /* WechatManager.m in Sources */,
 				4A1B175B2089CACD00D26A72 /* ShoppingListViewController.m in Sources */,
 				4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */,

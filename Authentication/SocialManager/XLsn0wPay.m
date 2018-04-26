@@ -53,7 +53,7 @@
     NSDictionary *Info_plist_dic = [NSDictionary dictionaryWithContentsOfFile:Info_plist_path];
     NSArray *URL_Types_Array = Info_plist_dic[@"CFBundleURLTypes"];
     NSAssert(URL_Types_Array, addURLTypes);
-    
+    [[NSUserDefaults standardUserDefaults]setBool:false forKey:@"PAYSUCCESS"];
     for (NSDictionary *URL_Type_Dic in URL_Types_Array) {
         NSString *URL_Name = URL_Type_Dic[@"CFBundleURLName"];
         NSArray *URL_Schemes_Array = URL_Type_Dic[@"CFBundleURLSchemes"];
@@ -104,6 +104,7 @@
             case 0:
                 errorCode = XLsn0wPayResultSuccess;
                 errStr = @"订单支付成功";
+                [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"PAYSUCCESS"];
                 break;
             case -1:
                 errorCode = XLsn0wPayResultFailure;
@@ -112,6 +113,7 @@
             case -2:
                 errorCode = XLsn0wPayResultCancel;
                 errStr = @"用户中途取消";
+                [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"PAYSUCCESS"];
                 break;
             default:
                 errorCode = XLsn0wPayResultFailure;

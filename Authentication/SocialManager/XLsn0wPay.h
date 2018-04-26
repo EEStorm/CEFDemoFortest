@@ -17,6 +17,9 @@ typedef void(^XLsn0wPayResultCallBack)(XLsn0wPayResult payResult, NSString *erro
 
 @interface XLsn0wPay : NSObject
 
+@property(nonatomic,assign)BOOL wechatPayEnable;
+@property(nonatomic,assign)BOOL aliPayEnable;
+@property(nonatomic,assign)BOOL unionPayEnable;
 /**
  XLsn0wPay 单例
 

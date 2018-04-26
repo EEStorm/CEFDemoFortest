@@ -11,6 +11,7 @@
 #import "WeiboSDK.h"
 #import "SocialManager.h"
 #import "CEFService.h"
+#import "PagementSuccessVC.h"
 
 //微信开发者ID
 #define URL_APPID @"wxa186d3f0aa51c56e"
@@ -38,6 +39,7 @@
 
 //
     [CEFPayManager registerPayment];
+    CEFPayManager.aliPayEnable = false;
     
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     if (EID) {
@@ -77,7 +79,7 @@
 
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
 
-    
+  
     return [[SocialManager defaultManager] handleOpenURL:url options:options];
 
     return YES;
@@ -166,6 +168,13 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+        if ([[NSUserDefaults standardUserDefaults]boolForKey:@"PAYSUCCESS"]) {
+            UIViewController *topmostVC = [self topViewController];
+            UIStoryboard *PaymentSuccessPageStoryboard = [UIStoryboard storyboardWithName:@"PaymentSuccessPage" bundle:nil];
+            PagementSuccessVC *paysuccessPage = [PaymentSuccessPageStoryboard instantiateInitialViewController];
+            [topmostVC.navigationController pushViewController:paysuccessPage animated:YES];
+        }
 }
 
 
@@ -173,5 +182,23 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (UIViewController *)topViewController {
+    UIViewController *resultVC;
+    resultVC = [self _topViewController:[[UIApplication sharedApplication].keyWindow rootViewController]];
+    while (resultVC.presentedViewController) {
+        resultVC = [self _topViewController:resultVC.presentedViewController];
+    }
+    return resultVC;
+}
 
+- (UIViewController *)_topViewController:(UIViewController *)vc {
+    if ([vc isKindOfClass:[UINavigationController class]]) {
+        return [self _topViewController:[(UINavigationController *)vc topViewController]];
+    } else if ([vc isKindOfClass:[UITabBarController class]]) {
+        return [self _topViewController:[(UITabBarController *)vc selectedViewController]];
+    } else {
+        return vc;
+    }
+    return nil;
+}
 @end

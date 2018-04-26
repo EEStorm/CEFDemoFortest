@@ -7,11 +7,15 @@
 //
 
 #import "PaymentPageViewController.h"
+#import "PagementSuccessVC.h"
 #import <CommonCrypto/CommonDigest.h>
 
 @interface PaymentPageViewController ()
 @property (weak, nonatomic) IBOutlet UIView *wexinpay;
-
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *unionPayConstant;
+@property (weak, nonatomic) IBOutlet UIView *alipayView;
+@property (weak, nonatomic) IBOutlet UIView *unionPayView;
+@property (nonatomic,assign)NSInteger paylistCount;
 @end
 
 @implementation PaymentPageViewController
@@ -66,6 +70,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewWillAppear:(BOOL)animated{
+    
+}
 /*
 #pragma mark - Navigation
 
