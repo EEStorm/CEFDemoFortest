@@ -15,5 +15,6 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "XLsn0wPay.h"
+#import "WechatProfile.h"
 
 #endif /* PrefixHeader_pch */

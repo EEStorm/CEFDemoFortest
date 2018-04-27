@@ -13,6 +13,7 @@
 #import "ShoppingListViewController.h"
 #import "CompleteProfileController.h"
 #import "MBProgressHUD.h"
+#import "PersonalProfile.h"
 
 #define SHColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
 
@@ -185,6 +186,8 @@
     [self setUpUI];
     
     [self registerDelegate];
+    PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
+    [personalProfile uploadProfile];
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];

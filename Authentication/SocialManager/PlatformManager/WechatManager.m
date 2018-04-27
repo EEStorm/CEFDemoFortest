@@ -195,6 +195,22 @@
 //                NSString *memNickName = [dic objectForKey:@"nickname"];
 //                NSString *memSex = [dic objectForKey:@"sex"];
                 
+                NSMutableArray *arr = [NSMutableArray array];
+                WechatProfile *wechatProfile = [[WechatProfile alloc]init];
+                wechatProfile.openid = [dic objectForKey:@"openid"];
+                wechatProfile.city = [dic objectForKey:@"city"];
+                wechatProfile.country = [dic objectForKey:@"country"];
+                wechatProfile.language = [dic objectForKey:@"language"];
+                wechatProfile.nickname = [dic objectForKey:@"nickname"];
+                wechatProfile.province = [dic objectForKey:@"province"];
+                wechatProfile.sex = [dic objectForKey:@"sex"];
+                [arr addObject:wechatProfile];
+                
+                NSString *homePath = NSHomeDirectory();
+                NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/hehe.archive"];
+                [NSKeyedArchiver archiveRootObject:arr toFile:path];
+                
+                
                 //                [self loginWithOpenId:openId memNickName:memNickName memSex:memSex];
             }
         });

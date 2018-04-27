@@ -52,6 +52,9 @@
 		4AE46D0F2090696F008435B4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE46D0E2090696E008435B4 /* libWeChatSDK.a */; };
 		4AE46D142091B532008435B4 /* PaymentSuccessPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */; };
 		4AE46D172091B8D2008435B4 /* PagementSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */; };
+		4AE46D1A2091C404008435B4 /* WechatProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D192091C404008435B4 /* WechatProfile.m */; };
+		4AE46D232091CB99008435B4 /* PersonalProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D222091CB99008435B4 /* PersonalProfile.m */; };
+		4AE46D262091DAFD008435B4 /* QQProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D252091DAFD008435B4 /* QQProfile.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -124,6 +127,12 @@
 		4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSuccessPage.storyboard; sourceTree = "<group>"; };
 		4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PagementSuccessVC.h; sourceTree = "<group>"; };
 		4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PagementSuccessVC.m; sourceTree = "<group>"; };
+		4AE46D182091C404008435B4 /* WechatProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatProfile.h; sourceTree = "<group>"; };
+		4AE46D192091C404008435B4 /* WechatProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatProfile.m; sourceTree = "<group>"; };
+		4AE46D212091CB99008435B4 /* PersonalProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PersonalProfile.h; sourceTree = "<group>"; };
+		4AE46D222091CB99008435B4 /* PersonalProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PersonalProfile.m; sourceTree = "<group>"; };
+		4AE46D242091DAFD008435B4 /* QQProfile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQProfile.h; sourceTree = "<group>"; };
+		4AE46D252091DAFD008435B4 /* QQProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQProfile.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -159,24 +168,11 @@
 		4A1B174C2089CAAD00D26A72 /* CEFDemo */ = {
 			isa = PBXGroup;
 			children = (
-				4A1B17522089CACD00D26A72 /* CompleteProfile.storyboard */,
-				4A1B17562089CACD00D26A72 /* CompleteProfileController.h */,
-				4A1B174F2089CACD00D26A72 /* CompleteProfileController.m */,
-				4A1B17502089CACD00D26A72 /* shoppingCell.h */,
-				4A1B17552089CACD00D26A72 /* shoppingCell.m */,
-				4A1B174E2089CACC00D26A72 /* shoppingCell.xib */,
-				4A1B17512089CACD00D26A72 /* ShoppingListModel.h */,
-				4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */,
-				4A1B17532089CACD00D26A72 /* ShoppingListViewController.h */,
-				4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */,
-				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
-				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
-				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
-				4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */,
-				4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */,
-				4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */,
-				4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */,
-				4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */,
+				4AE46D202091CB77008435B4 /* DAL */,
+				4AE46D1F2091CB34008435B4 /* Util */,
+				4AE46D1E2091CAFB008435B4 /* Controller */,
+				4AE46D1D2091CAF2008435B4 /* model */,
+				4AE46D1B2091CADC008435B4 /* view */,
 			);
 			path = CEFDemo;
 			sourceTree = "<group>";
@@ -184,6 +180,8 @@
 		4A9B528920073344008F09B1 /* SocialManager */ = {
 			isa = PBXGroup;
 			children = (
+				4AD4F811208D7DC30091F793 /* CEFService.h */,
+				4AD4F812208D7DC30091F793 /* CEFService.m */,
 				4AE46D09209060BC008435B4 /* XLsn0wPay.h */,
 				4AE46D08209060BC008435B4 /* XLsn0wPay.m */,
 				4ACC67462005DD540087D995 /* SocialManager.h */,
@@ -242,11 +240,6 @@
 				4A1B174C2089CAAD00D26A72 /* CEFDemo */,
 				4ACC66EE200358790087D995 /* AppDelegate.h */,
 				4ACC66EF200358790087D995 /* AppDelegate.m */,
-				4AD4F811208D7DC30091F793 /* CEFService.h */,
-				4AD4F812208D7DC30091F793 /* CEFService.m */,
-				4ACC66F1200358790087D995 /* ViewController.h */,
-				4ACC66F2200358790087D995 /* ViewController.m */,
-				4ACC66F4200358790087D995 /* Main.storyboard */,
 				4ACC66FC200358790087D995 /* Info.plist */,
 				4A9B528920073344008F09B1 /* SocialManager */,
 				4ACC67422004CB8A0087D995 /* TencentOpenAPI.framework */,
@@ -301,6 +294,68 @@
 				4ACC6725200477480087D995 /* WeiboSDK.h */,
 			);
 			path = libWeiboSDK;
+			sourceTree = "<group>";
+		};
+		4AE46D1B2091CADC008435B4 /* view */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B17502089CACD00D26A72 /* shoppingCell.h */,
+				4A1B17552089CACD00D26A72 /* shoppingCell.m */,
+				4A1B174E2089CACC00D26A72 /* shoppingCell.xib */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		4AE46D1D2091CAF2008435B4 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B17512089CACD00D26A72 /* ShoppingListModel.h */,
+				4A1B174D2089CACC00D26A72 /* ShoppingListModel.m */,
+				4AE46D182091C404008435B4 /* WechatProfile.h */,
+				4AE46D192091C404008435B4 /* WechatProfile.m */,
+				4AE46D242091DAFD008435B4 /* QQProfile.h */,
+				4AE46D252091DAFD008435B4 /* QQProfile.m */,
+			);
+			path = model;
+			sourceTree = "<group>";
+		};
+		4AE46D1E2091CAFB008435B4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				4A1B17522089CACD00D26A72 /* CompleteProfile.storyboard */,
+				4A1B17562089CACD00D26A72 /* CompleteProfileController.h */,
+				4A1B174F2089CACD00D26A72 /* CompleteProfileController.m */,
+				4A1B17532089CACD00D26A72 /* ShoppingListViewController.h */,
+				4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */,
+				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
+				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
+				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
+				4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */,
+				4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */,
+				4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */,
+				4ACC66F1200358790087D995 /* ViewController.h */,
+				4ACC66F2200358790087D995 /* ViewController.m */,
+				4ACC66F4200358790087D995 /* Main.storyboard */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		4AE46D1F2091CB34008435B4 /* Util */ = {
+			isa = PBXGroup;
+			children = (
+				4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */,
+				4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */,
+			);
+			path = Util;
+			sourceTree = "<group>";
+		};
+		4AE46D202091CB77008435B4 /* DAL */ = {
+			isa = PBXGroup;
+			children = (
+				4AE46D212091CB99008435B4 /* PersonalProfile.h */,
+				4AE46D222091CB99008435B4 /* PersonalProfile.m */,
+			);
+			path = DAL;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -400,11 +455,14 @@
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
 				4AE46D0A209060BC008435B4 /* XLsn0wPay.m in Sources */,
 				4ACC66FE200358790087D995 /* main.m in Sources */,
+				4AE46D1A2091C404008435B4 /* WechatProfile.m in Sources */,
 				4ACC675120061F0C0087D995 /* QQManager.m in Sources */,
 				4ACC66F0200358790087D995 /* AppDelegate.m in Sources */,
 				4AD4F813208D7DC40091F793 /* CEFService.m in Sources */,
+				4AE46D232091CB99008435B4 /* PersonalProfile.m in Sources */,
 				4A1B175C2089CACD00D26A72 /* shoppingCell.m in Sources */,
 				4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */,
+				4AE46D262091DAFD008435B4 /* QQProfile.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

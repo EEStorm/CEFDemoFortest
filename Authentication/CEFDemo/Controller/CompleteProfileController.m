@@ -10,6 +10,7 @@
 #import "CEFService.h"
 #import "AppDelegate.h"
 #import "ShoppingListViewController.h"
+#import "PersonalProfile.h"
 
 @interface CompleteProfileController ()
 @property (weak, nonatomic) IBOutlet UITextField *usernameFeild;
@@ -26,33 +27,12 @@
 - (IBAction)completeBtnClick:(id)sender {
     
     [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"ISLOGIN"];
-    NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    [[NSUserDefaults standardUserDefaults]setObject:self.usernameFeild.text forKey:@"USERNAME"];
+    [[NSUserDefaults standardUserDefaults]setObject:self.phonenumberFeild.text forKey:@"PHONE"];
+    [[NSUserDefaults standardUserDefaults]setObject:self.emailFeild.text forKey:@"EMAIL"];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cefsfcluster.chinanorth.cloudapp.chinacloudapi.cn/users/%@/serviceproviders/authentication",EID]];
-    
-    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
-    request.HTTPMethod = @"POST";
-    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    
-    NSDictionary *dictPramas = @{@"channel":@"Any",
-                                 @"properties":@{
-                                                @"username":self.usernameFeild.text,
-                                                @"phone":self.phonenumberFeild.text,
-                                                @"email":self.emailFeild.text,
-                                                @"socialProfile":self.type
-                                                }
-                                 };
-    NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
-    request.HTTPBody = data;
-    
-    NSURLSession *session = [NSURLSession sharedSession];
-    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
-        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
-        NSLog(@"%@",dict);
-//        profile(dict);
-    }];
-    
-    [sessionDataTask resume];
+    PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
+    [personalProfile uploadProfile];
     
     [self dismissViewControllerAnimated:true completion:^{
         ShoppingListViewController *shoppingVC = [[ShoppingListViewController alloc]init];

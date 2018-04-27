@@ -32,19 +32,23 @@
 }
 
 -(void)wechatPay:(UITapGestureRecognizer *)gesture{
-    PayReq *req = [[PayReq alloc] init];
-    req.partnerId = @"1502289851";
-    req.prepayId= @"wx251339043342975af9ddb8af3100473921";
-    req.package = @"Sign=WXPay";
-    req.nonceStr= @"5K8264ILTKCH16CQ2502SI8ZNMTM67VS";
-    req.timeStamp= @"1412000000".intValue;
-    
-    NSString *signStr = [NSString stringWithFormat:@"appid=wxa186d3f0aa51c56e&noncestr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=Sign=WXPay&partnerid=1502289851&prepayid=%@&timestamp=1412000000&key=cefacedjfioakckjguqnqk91701dadj1",@"wx251339043342975af9ddb8af3100473921"];
-    NSString *sign = [self md5:signStr];
-    
-    req.sign= sign;
-    [CEFPayManager xlsn0wPayWithOrder:req callBack:^(XLsn0wPayResult payResult, NSString *errorMessage) {
-        NSLog(@"errCode = %zd,errStr = %@",payResult, errorMessage);
+    NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    [CEFPayManager requestOrderPrepayId: EID createOrderCompletion:^(NSString *prepayId) {
+        
+        PayReq *req = [[PayReq alloc] init];
+        req.partnerId = @"1502289851";
+        req.prepayId= prepayId;
+        req.package = @"Sign=WXPay";
+        req.nonceStr= @"5K8264ILTKCH16CQ2502SI8ZNMTM67VS";
+        req.timeStamp= @"1412000000".intValue;
+        
+        NSString *signStr = [NSString stringWithFormat:@"appid=wxa186d3f0aa51c56e&noncestr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=Sign=WXPay&partnerid=1502289851&prepayid=%@&timestamp=1412000000&key=cefacedjfioakckjguqnqk91701dadj1",prepayId];
+        NSString *sign = [self md5:signStr];
+        
+        req.sign= sign;
+        [CEFPayManager xlsn0wPayWithOrder:req callBack:^(XLsn0wPayResult payResult, NSString *errorMessage) {
+            NSLog(@"errCode = %zd,errStr = %@",payResult, errorMessage);
+        }];
     }];
 }
 

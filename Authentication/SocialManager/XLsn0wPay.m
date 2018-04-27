@@ -126,6 +126,36 @@
     }
 }
 
+-(void)requestOrderPrepayId:(NSString *)EID createOrderCompletion:(CreateOrderCompletion)createOrder{
+    
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentdev.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
+    
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSDictionary *dictPramas = @{@"eid":EID,
+                                 @"channel":@"WeChat",
+                                 @"subject":@"Test",
+                                 @"tradeNumber":@"DevTradeNumber001",
+                                 @"amount":@"1",
+                                 @"notifyUrl":@"https://xzshengwebhookwatcher.azurewebsites.net/api/weChatPaymentWebhook"
+                                 };
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
+    request.HTTPBody = data;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+//        EID = (NSString *)[dict objectForKey:@"eid"];
+//        eidStr(EID);
+        NSDictionary *properties = (NSDictionary *)[dict objectForKey:@"properties"];
+        NSString *prepayId = [properties objectForKey:@"prepayId"];
+        createOrder(prepayId);
+        NSLog(@"%@",prepayId);
+    }];
+    [sessionDataTask resume];
+    
+}
 #pragma mark -- Setter & Getter
 
 - (NSMutableDictionary *)URL_Schemes_Dic {

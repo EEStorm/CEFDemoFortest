@@ -14,17 +14,15 @@ typedef NS_ENUM(NSInteger, XLsn0wPayResult){
 };
 
 typedef void(^XLsn0wPayResultCallBack)(XLsn0wPayResult payResult, NSString *errorMessage);
+typedef void(^CreateOrderCompletion)(NSString*);
 
 @interface XLsn0wPay : NSObject
 
+@property(nonatomic,copy)CreateOrderCompletion createOrderCompletion;
 @property(nonatomic,assign)BOOL wechatPayEnable;
 @property(nonatomic,assign)BOOL aliPayEnable;
 @property(nonatomic,assign)BOOL unionPayEnable;
-/**
- XLsn0wPay 单例
 
- @return [XLsn0wPay defaultManager]
- */
 + (instancetype)defaultManager;
 
 /**
@@ -45,4 +43,6 @@ typedef void(^XLsn0wPayResultCallBack)(XLsn0wPayResult payResult, NSString *erro
  */
 - (void)xlsn0wPayWithOrder:(id)order callBack:(XLsn0wPayResultCallBack)callBack;
 
+
+- (void)requestOrderPrepayId:(NSString *)EID createOrderCompletion:(CreateOrderCompletion) createOrder;
 @end
