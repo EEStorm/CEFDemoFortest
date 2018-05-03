@@ -2,21 +2,21 @@
 #import <Foundation/Foundation.h>
 #import "WXApi.h"
 
-#define CEFPayManager [XLsn0wPay defaultManager]
+#define CEFPayManager [CEFServicePay defaultManager]
 
 /**
  支付成功回调状态码
  */
-typedef NS_ENUM(NSInteger, XLsn0wPayResult){
-    XLsn0wPayResultSuccess,// 成功
-    XLsn0wPayResultFailure,// 失败
-    XLsn0wPayResultCancel  // 取消
+typedef NS_ENUM(NSInteger, CEFServicePayResult){
+    CEFServicePayResultSuccess,// 成功
+    CEFServicePayResultFailure,// 失败
+    CEFServicePayResultCancel  // 取消
 };
 
-typedef void(^XLsn0wPayResultCallBack)(XLsn0wPayResult payResult, NSString *errorMessage);
+typedef void(^CEFServicePayResultCallBack)(CEFServicePayResult payResult, NSString *errorMessage);
 typedef void(^CreateOrderCompletion)(NSString*);
 
-@interface XLsn0wPay : NSObject
+@interface CEFServicePay : NSObject
 
 @property(nonatomic,copy)CreateOrderCompletion createOrderCompletion;
 @property(nonatomic,assign)BOOL wechatPayEnable;
@@ -41,7 +41,7 @@ typedef void(^CreateOrderCompletion)(NSString*);
  @param order 传入订单信息,如果是字符串，则对应是跳转支付宝支付；如果传入PayReq 对象，这跳转微信支付,注意，不能传入空字符串或者nil
  @param callBack 回调，有返回状态信息
  */
-- (void)xlsn0wPayWithOrder:(id)order callBack:(XLsn0wPayResultCallBack)callBack;
+- (void)CEFServicePayWithOrder:(id)order callBack:(CEFServicePayResultCallBack)callBack;
 
 
 - (void)requestOrderPrepayId:(NSString *)EID createOrderCompletion:(CreateOrderCompletion) createOrder;

@@ -48,7 +48,7 @@
 		4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */; };
 		4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */; };
 		4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */; };
-		4AE46D0A209060BC008435B4 /* XLsn0wPay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D08209060BC008435B4 /* XLsn0wPay.m */; };
+		4AE46D0A209060BC008435B4 /* CEFServicePay.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D08209060BC008435B4 /* CEFServicePay.m */; };
 		4AE46D0F2090696F008435B4 /* libWeChatSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4AE46D0E2090696E008435B4 /* libWeChatSDK.a */; };
 		4AE46D142091B532008435B4 /* PaymentSuccessPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */; };
 		4AE46D172091B8D2008435B4 /* PagementSuccessVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */; };
@@ -120,8 +120,8 @@
 		4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentPage.storyboard; sourceTree = "<group>"; };
 		4AD4F81C208F07ED0091F793 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4AD4F81D208F07ED0091F793 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
-		4AE46D08209060BC008435B4 /* XLsn0wPay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLsn0wPay.m; sourceTree = "<group>"; };
-		4AE46D09209060BC008435B4 /* XLsn0wPay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLsn0wPay.h; sourceTree = "<group>"; };
+		4AE46D08209060BC008435B4 /* CEFServicePay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEFServicePay.m; sourceTree = "<group>"; };
+		4AE46D09209060BC008435B4 /* CEFServicePay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEFServicePay.h; sourceTree = "<group>"; };
 		4AE46D0B20906270008435B4 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		4AE46D0E2090696E008435B4 /* libWeChatSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libWeChatSDK.a; sourceTree = "<group>"; };
 		4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PaymentSuccessPage.storyboard; sourceTree = "<group>"; };
@@ -182,8 +182,8 @@
 			children = (
 				4AD4F811208D7DC30091F793 /* CEFService.h */,
 				4AD4F812208D7DC30091F793 /* CEFService.m */,
-				4AE46D09209060BC008435B4 /* XLsn0wPay.h */,
-				4AE46D08209060BC008435B4 /* XLsn0wPay.m */,
+				4AE46D09209060BC008435B4 /* CEFServicePay.h */,
+				4AE46D08209060BC008435B4 /* CEFServicePay.m */,
 				4ACC67462005DD540087D995 /* SocialManager.h */,
 				4ACC67472005DD540087D995 /* SocialManager.m */,
 				4A9B528A2007335D008F09B1 /* PlatformManager */,
@@ -453,7 +453,7 @@
 				4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */,
 				4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
-				4AE46D0A209060BC008435B4 /* XLsn0wPay.m in Sources */,
+				4AE46D0A209060BC008435B4 /* CEFServicePay.m in Sources */,
 				4ACC66FE200358790087D995 /* main.m in Sources */,
 				4AE46D1A2091C404008435B4 /* WechatProfile.m in Sources */,
 				4ACC675120061F0C0087D995 /* QQManager.m in Sources */,

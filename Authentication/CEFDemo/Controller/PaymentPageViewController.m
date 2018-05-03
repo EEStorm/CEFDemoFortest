@@ -33,7 +33,17 @@
 
 -(void)wechatPay:(UITapGestureRecognizer *)gesture{
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+    
+    // Change the background view style and color.
+    hud.backgroundView.style = MBProgressHUDBackgroundStyleSolidColor;
+    hud.backgroundView.color = [UIColor colorWithWhite:0.f alpha:0.1f];
+    
     [CEFPayManager requestOrderPrepayId: EID createOrderCompletion:^(NSString *prepayId) {
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [hud hideAnimated:YES];
+        });
         
         PayReq *req = [[PayReq alloc] init];
         req.partnerId = @"1502289851";
@@ -46,9 +56,12 @@
         NSString *sign = [self md5:signStr];
         
         req.sign= sign;
-        [CEFPayManager xlsn0wPayWithOrder:req callBack:^(XLsn0wPayResult payResult, NSString *errorMessage) {
-            NSLog(@"errCode = %zd,errStr = %@",payResult, errorMessage);
-        }];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [CEFPayManager CEFServicePayWithOrder:req callBack:^(CEFServicePayResult payResult, NSString *errorMessage) {
+                NSLog(@"errCode = %zd,errStr = %@",payResult, errorMessage);
+            }];
+        });
     }];
 }
 

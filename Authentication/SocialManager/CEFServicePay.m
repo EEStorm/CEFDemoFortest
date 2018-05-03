@@ -1,5 +1,5 @@
 
-#import "XLsn0wPay.h"
+#import "CEFServicePay.h"
 /**
  *  此处必须保证在Info.plist 中的 URL Types 的 Identifier 对应一致
  */
@@ -16,25 +16,25 @@
 // 添加了 URL Types 但信息不全
 #define addURLSchemes(URLTypes) [NSString stringWithFormat:@"请先在Info.plist对应的 URLTypes 添加 %@ 对应的 URL Schemes", URLTypes]
 
-@interface XLsn0wPay () <WXApiDelegate>
+@interface CEFServicePay () <WXApiDelegate>
 
 // 支付结果缓存回调
-@property (nonatomic, copy) XLsn0wPayResultCallBack callBack;
+@property (nonatomic, copy) CEFServicePayResultCallBack callBack;
 // 保存URL_Schemes到字典里面
 @property (nonatomic, strong) NSMutableDictionary *URL_Schemes_Dic;
 
 @end
 
-@implementation XLsn0wPay
+@implementation CEFServicePay
 
 
 + (instancetype)defaultManager {
-    static XLsn0wPay *xlsn0wPay;
+    static CEFServicePay *CEFServicePay;
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
-        xlsn0wPay = [[self alloc] init];
+        CEFServicePay = [[self alloc] init];
     });
-    return xlsn0wPay;
+    return CEFServicePay;
 }
 
 - (BOOL)handleOpenURL:(NSURL *)url {
@@ -80,7 +80,7 @@
     }
 }
 
-- (void)xlsn0wPayWithOrder:(id)order callBack:(XLsn0wPayResultCallBack)callBack {
+- (void)CEFServicePayWithOrder:(id)order callBack:(CEFServicePayResultCallBack)callBack {
     NSAssert(order, orderMessage_nil);
     // 缓存block
     self.callBack = callBack;
@@ -98,25 +98,24 @@
     // 判断支付类型
     if([resp isKindOfClass:[PayResp class]]){
         //支付回调
-        XLsn0wPayResult errorCode = XLsn0wPayResultSuccess;
+        CEFServicePayResult errorCode = CEFServicePayResultSuccess;
         NSString *errStr = resp.errStr;
         switch (resp.errCode) {
             case 0:
-                errorCode = XLsn0wPayResultSuccess;
+                errorCode = CEFServicePayResultSuccess;
                 errStr = @"订单支付成功";
                 [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"PAYSUCCESS"];
                 break;
             case -1:
-                errorCode = XLsn0wPayResultFailure;
+                errorCode = CEFServicePayResultFailure;
                 errStr = resp.errStr;
                 break;
             case -2:
-                errorCode = XLsn0wPayResultCancel;
+                errorCode = CEFServicePayResultCancel;
                 errStr = @"用户中途取消";
-                [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"PAYSUCCESS"];
                 break;
             default:
-                errorCode = XLsn0wPayResultFailure;
+                errorCode = CEFServicePayResultFailure;
                 errStr = resp.errStr;
                 break;
         }
@@ -127,8 +126,8 @@
 }
 
 -(void)requestOrderPrepayId:(NSString *)EID createOrderCompletion:(CreateOrderCompletion)createOrder{
-    
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentdev.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
+   
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentstaging.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
     
     NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
     request.HTTPMethod = @"POST";
@@ -149,9 +148,12 @@
 //        EID = (NSString *)[dict objectForKey:@"eid"];
 //        eidStr(EID);
         NSDictionary *properties = (NSDictionary *)[dict objectForKey:@"properties"];
-        NSString *prepayId = [properties objectForKey:@"prepayId"];
+        NSString *prepayId = [properties objectForKey:@"prepayid"];
         createOrder(prepayId);
         NSLog(@"%@",prepayId);
+        
+        
+        [[NSUserDefaults standardUserDefaults]setBool:false forKey:@"PAYSUCCESS"];
     }];
     [sessionDataTask resume];
     

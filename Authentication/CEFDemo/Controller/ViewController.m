@@ -187,7 +187,7 @@
     
     [self registerDelegate];
     PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
-    [personalProfile uploadProfile];
+//    [personalProfile uploadProfile];
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];

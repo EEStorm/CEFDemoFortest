@@ -33,26 +33,19 @@
         NSLog(@"%@", wechatProfile.openid);
     }
     NSMutableDictionary *socialProfile = [[NSMutableDictionary alloc]init];
-    NSDictionary *wechatDic = @{
-                               @"subscribe": @"1",
-                               @"openid": wechatProfile.openid,
-                               @"nickname": wechatProfile.nickname,
-                               @"sex": @"1",
-                               @"language": wechatProfile.language,
-                               @"city": wechatProfile.city,
-                               @"country": wechatProfile.country,
-                               @"province": wechatProfile.province,
-                               };
+//    NSDictionary *wechatDic = @{
+//                               @"subscribe": @"1",
+//                               @"openid": wechatProfile.openid,
+//                               @"nickname": wechatProfile.nickname,
+//                               @"sex": @"1",
+//                               @"language": wechatProfile.language,
+//                               @"city": wechatProfile.city,
+//                               @"country": wechatProfile.country,
+//                               @"province": wechatProfile.province,
+//                               };
 //    [socialProfile setValue:wechatProfiledic forKey:@"wechat"];
     NSDictionary *dictPramas = @{@"channel":@"Any",
-                                 @"properties":@{
-                                         @"username":@"1",
-                                         @"phone":@"1",
-                                         @"email":@"1",
-                                         @"socialProfile":@"WeiBo",
-                                         @"Profile":@{
-                                                 @"WeChat":wechatDic                                                 }
-                                         }
+                                 @"properties":@""
                                  };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
     request.HTTPBody = data;
