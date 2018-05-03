@@ -17,4 +17,5 @@
 #import "CEFServicePay.h"
 #import "WechatProfile.h"
 #import "MBProgressHUD.h"
+#import "QQProfile.h"
 #endif /* PrefixHeader_pch */

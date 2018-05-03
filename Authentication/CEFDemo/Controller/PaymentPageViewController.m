@@ -28,7 +28,7 @@
     
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wechatPay:)];
-    [self.view addGestureRecognizer:tapGesture];
+    [self.wexinpay addGestureRecognizer:tapGesture];
 }
 
 -(void)wechatPay:(UITapGestureRecognizer *)gesture{

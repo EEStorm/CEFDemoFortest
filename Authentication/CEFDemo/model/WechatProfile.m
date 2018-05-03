@@ -10,16 +10,7 @@
 
 @implementation WechatProfile
 
-//"WeChat": {
-//    "subscribe": "1",
-//    "openid": "oLVPpjqs2BhvzwPj5A-vTYAX4GLc",
-//    "nickname": "ciweibaobao",
-//    "sex": "1",
-//    "language": "zh_CN",
-//    "city": "ShenZhen",
-//    "province": "Gangdong",
-//    "country": "China"
-//},
+
 - (instancetype)initWithCoder:(NSCoder *)aDecoder{
     if (self = [super init]) {
         NSLog(@"initWithCoder");

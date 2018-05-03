@@ -126,6 +126,7 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
 
          NSLog(@"%@",result);
+        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"WECHATLOGIN"];
         [self presentCompleteVC:@"weixin"];
     }];
 }
@@ -135,6 +136,7 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
 
         NSLog(@"%@",result);
+        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"QQLOGIN"];
         [self presentCompleteVC:@"QQ"];
 
     }];
@@ -165,6 +167,9 @@
         UIViewController *vc = app.window.rootViewController;
         app.window.rootViewController = nav;
         [vc removeFromParentViewController];
+        
+        PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
+        [personalProfile uploadProfile];
     }else {
         
         UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
@@ -186,8 +191,7 @@
     [self setUpUI];
     
     [self registerDelegate];
-    PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
-//    [personalProfile uploadProfile];
+    
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];

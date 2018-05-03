@@ -190,11 +190,7 @@
                 
                 
                self.completion(self.result,self.error);
-//                NSLog(@"%@",dic);
-//                NSString *openId = [dic objectForKey:@"openid"];
-//                NSString *memNickName = [dic objectForKey:@"nickname"];
-//                NSString *memSex = [dic objectForKey:@"sex"];
-                
+               
                 NSMutableArray *arr = [NSMutableArray array];
                 WechatProfile *wechatProfile = [[WechatProfile alloc]init];
                 wechatProfile.openid = [dic objectForKey:@"openid"];
@@ -207,7 +203,7 @@
                 [arr addObject:wechatProfile];
                 
                 NSString *homePath = NSHomeDirectory();
-                NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/hehe.archive"];
+                NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/wechat.archive"];
                 [NSKeyedArchiver archiveRootObject:arr toFile:path];
                 
                 

@@ -157,6 +157,20 @@
     NSLog(@" response %@",response.userData);
     NSLog(@" response %@",response.jsonResponse);
     
+    NSDictionary *dic = response.jsonResponse;
+    NSMutableArray *arr = [NSMutableArray array];
+    QQProfile *qqPofile = [[QQProfile alloc]init];
+    qqPofile.is_yellow_vip = [dic objectForKey:@"is_yellow_vip"];
+    qqPofile.city = [dic objectForKey:@"city"];
+    qqPofile.gender = [dic objectForKey:@"gender"];
+    qqPofile.year = [dic objectForKey:@"year"];
+    qqPofile.nickname = [dic objectForKey:@"nickname"];
+    qqPofile.province = [dic objectForKey:@"province"];
+    [arr addObject:qqPofile];
+    
+    NSString *homePath = NSHomeDirectory();
+    NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/QQ.archive"];
+    [NSKeyedArchiver archiveRootObject:arr toFile:path];
    
     self.completion(response.jsonResponse, 0);
     
