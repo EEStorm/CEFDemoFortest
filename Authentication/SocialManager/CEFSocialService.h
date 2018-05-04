@@ -11,6 +11,7 @@
 #import "WechatManager.h"
 #import "WeiboManager.h"
 #import "QQManager.h"
+#import "CEFResponse.h"
 
 //#import "WXApi.h"
 #import "WeiboSDK.h"
@@ -38,23 +39,23 @@ enum  CEFErrCode {
 };
 
 
-@interface CEFResp : NSObject
-/** 错误码 */
-@property (nonatomic, assign) int errCode;
-/** 错误提示字符串 */
-@property (nonatomic, retain) NSString *errStr;
-/** 响应类型 */
-@property (nonatomic, assign) int type;
-/** 平台类型 */
-@property (nonatomic, assign) int channel;
-
-@end
+//@interface CEFResponse : NSObject
+///** 错误码 */
+//@property (nonatomic, assign) int errCode;
+///** 错误提示字符串 */
+//@property (nonatomic, retain) NSString *errStr;
+///** 响应类型 */
+//@property (nonatomic, assign) int type;
+///** 平台类型 */
+//@property (nonatomic, assign) int channel;
+//
+//@end
 
 
 @protocol CEFApiDelegate <NSObject>
 
 @optional
-- (void)onResopnse:(CEFResp*) cefResp;
+- (void)onResopnse:(CEFResponse*) CEFResponse;
 @end
 
 

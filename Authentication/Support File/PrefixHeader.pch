@@ -19,7 +19,10 @@
 #import "MBProgressHUD.h"
 #import "QQProfile.h"
 #import "CEFSocialService.h"
+#import "CEFResponse.h"
 
 #define CEFSocialManager [CEFSocialService defaultManager]
+
+
 
 #endif /* PrefixHeader_pch */

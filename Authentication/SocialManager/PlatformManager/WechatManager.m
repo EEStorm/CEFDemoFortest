@@ -110,11 +110,12 @@
      };
      */
     
-    CEFResp *cefresp = [[CEFResp alloc]init];
-    cefresp.errCode = resp.errCode;
-    cefresp.errStr = resp.errStr;
-    cefresp.type = resp.type;
-    [CEFSocialManager.CEFApiDel onResopnse:cefresp];
+    
+    CEFResponse *cefResponse = [[CEFResponse alloc]init];
+    cefResponse.errCode = resp.errCode;
+    cefResponse.errStr = resp.errStr;
+    cefResponse.type = resp.type;
+    [CEFSocialManager.CEFApiDel onResopnse:cefResponse];
     
     if ([resp isKindOfClass:[SendAuthResp class]]) {   //授权登录的类。
         if (resp.errCode == 0) {  //成功。
