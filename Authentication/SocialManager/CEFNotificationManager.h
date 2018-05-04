@@ -1,5 +1,5 @@
 //
-//  CEFService.h
+//  CEFNotificationManager.h
 //  NotificationDemo
 //
 //  Created by zhangDongdong on 2018/4/8.
@@ -23,7 +23,7 @@ static NSArray *Tags;
 static NSString *CustomId;
 static NSString *EId;
 
-@interface CEFService : NSObject
+@interface CEFNotificationManager : NSObject
 
 @property(copy,nonatomic)Completion successCompletion;
 @property(copy,nonatomic)Completion failedCompletion;
@@ -32,9 +32,9 @@ static NSString *EId;
 
 @property (nonatomic, assign) NSString * EID;
 
-+(NSString *)createEIDwithTags:(NSArray*)tags customId:(NSString*)customId EID:(GetEID)eidStr;
++(NSString *)createEIDwithTags:(NSArray*)tags customId:(NSString*)customId;
 
-+(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
++(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
 
 +(void)registerDeviceToken:(NSData *)deviceToken profile:(Profile)profile;
 

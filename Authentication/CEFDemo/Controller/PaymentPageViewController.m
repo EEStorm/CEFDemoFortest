@@ -14,7 +14,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *unionPayConstant;
 @property (weak, nonatomic) IBOutlet UIView *alipayView;
 @property (weak, nonatomic) IBOutlet UIView *unionPayView;
+@property (weak, nonatomic) IBOutlet UILabel *subjectLable;
 @property (nonatomic,assign)NSInteger paylistCount;
+@property (nonatomic,strong)NSString *subject;
 @end
 
 @implementation PaymentPageViewController
@@ -23,6 +25,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
 
+    self.subject = [[NSUserDefaults standardUserDefaults]objectForKey:@"SUBJECT"];
     [self setupUI];
 }
 
@@ -30,6 +33,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = true;
     
+    self.subjectLable.text = self.subject;
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wechatPay:)];
     [self.wexinpay addGestureRecognizer:tapGesture];
@@ -45,10 +49,9 @@
     
     [CEFPayManager CEFServicePayWithEID:EID
                                 channel:WeChat
-                                subject:@"Test"
+                                subject:self.subject
                             tradeNumber:@"DevTradeNumber001"
                                  amount:@"1"
-                              notifyUrl:@"https://xzshengwebhookwatcher.azurewebsites.net/api/weChatPaymentWebhook"
                                callBack:^(CEFServicePayResult payResult, NSString *errorMessage) {
                                    
                                    NSLog(@"errCode = %zd,errStr = %@",payResult, errorMessage);

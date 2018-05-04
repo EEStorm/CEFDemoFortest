@@ -160,7 +160,7 @@
 
 - (IBAction)weixinLogin:(id)sender {
     
-    [[SocialManager defaultManager]getUserInfoWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
+    [[CEFSocialService defaultManager]loginWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
 
          NSLog(@"%@",result);
         
@@ -170,7 +170,7 @@
 
 - (IBAction)QQLogin:(id)sender {
    
-    [[SocialManager defaultManager]getUserInfoWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
+    [[CEFSocialService defaultManager]loginWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
 
         NSLog(@"%@",result);
         
@@ -182,7 +182,7 @@
 
 - (IBAction)weiboLogin:(id)sender {
     
-    [[SocialManager defaultManager]getUserInfoWithPlatform:weibo completion:^(NSDictionary *result, NSInteger *error) {
+    [[CEFSocialService defaultManager]loginWithPlatform:weibo completion:^(NSDictionary *result, NSInteger *error) {
         
         NSLog(@"%@",result);
         

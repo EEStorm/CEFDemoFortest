@@ -123,6 +123,9 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     UIStoryboard *PaymentPageStoryboard = [UIStoryboard storyboardWithName:@"PaymentPage" bundle:nil];
+    
+    ShoppingListModel *shoppingModel = self.dataArray[indexPath.row];
+    [[NSUserDefaults standardUserDefaults]setObject:shoppingModel.text forKey:@"SUBJECT"];
     PaymentPageViewController *profileContpaymentVCroller = [PaymentPageStoryboard instantiateInitialViewController];
     [self.navigationController pushViewController:profileContpaymentVCroller animated:true];
 }

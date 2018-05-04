@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "SocialManager.h"
+#import "CEFSocialService.h"
 #import "CompleteProfileController.h"
 
 @interface ViewController : UIViewController

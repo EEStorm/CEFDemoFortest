@@ -32,6 +32,6 @@ typedef void(^CreateOrderCompletion)(NSString* prepayId,NSString* partnerid,NSSt
 
 - (void)registerPaymentWithEID:(NSString *)EID;
 
-- (void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack;
+- (void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount callBack:(CEFServicePayResultCallBack)callBack;
 
 @end

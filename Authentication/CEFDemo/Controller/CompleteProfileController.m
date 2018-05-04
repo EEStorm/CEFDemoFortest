@@ -7,7 +7,7 @@
 //
 
 #import "CompleteProfileController.h"
-#import "CEFService.h"
+#import "CEFNotificationManager.h"
 #import "AppDelegate.h"
 #import "ShoppingListViewController.h"
 #import "PersonalProfile.h"

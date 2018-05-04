@@ -9,8 +9,8 @@
 #import "AppDelegate.h"
 #import "WXApi.h"
 #import "WeiboSDK.h"
-#import "SocialManager.h"
-#import "CEFService.h"
+#import "CEFSocialService.h"
+#import "CEFNotificationManager.h"
 #import "PagementSuccessVC.h"
 
 //微信开发者ID
@@ -35,56 +35,28 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
-
-//
+    
+    [CEFSocialManager initWithWeChatKey:URL_APPID wechatSecret:URL_SECRET wechatRedictUrl:nil QQKey:QQ_APPID QQSecret:QQ_SECRET QQRedictUrl:nil
+        WeiBoKey:IFM_SinaAPPKey WeiBoSecret:IFM_SinaAppSecret WeiBoRedictUrl:nil];
     
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     
-    if (EID) {
-        
-        // Payment
-        [CEFPayManager registerPaymentWithEID:EID];
-        
-        // Authentication
-        [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil withEID:EID];
-        [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"" withEID:EID];
-        [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"" withEID:EID];
-        
-        // Notification
-        [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
-
-        } successCompletion:^{
-
-        } failedCompletion:^{
-
-        }];
-    }else {
-        
-        [CEFPayManager registerPaymentWithEID:EID];
-        
-        
-        [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil withEID:EID];
-        [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"" withEID:EID];
-        [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"" withEID:EID];
-        
-        
-        [CEFService createEIDwithTags:@[@"Beijing"] customId:@"storm" EID:^(NSString *EID) {
-
-            [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
-
-            [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
-
-            } successCompletion:^{
-
-            } failedCompletion:^{
-
-            }];
-        }];
+    if (!EID) {
+        EID = [CEFNotificationManager createEIDwithTags:@[@"Beijing"] customId:@"storm"];
+        [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
     }
-
     
+    [CEFPayManager registerPaymentWithEID:EID];
     
+    [CEFSocialManager registerAuthenticationWithEID:EID];
+    
+    [CEFNotificationManager registerNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
+        
+    } successCompletion:^{
+        
+    } failedCompletion:^{
+        
+    }];
     
     return YES;
 }
@@ -92,7 +64,7 @@
 -(BOOL)application:(UIApplication *)app openURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options{
 
   
-    return [[SocialManager defaultManager] handleOpenURL:url options:options];
+    return [[CEFSocialService defaultManager] handleOpenURL:url options:options];
 
     return YES;
 }
@@ -106,7 +78,7 @@
     
     UNNotificationRequest *request = notification.request;
     UNNotificationContent *content = request.content;
-    [CEFService getContent:content];
+//    [CEFNotificationManager getContent:content];
     
     // 提醒用户，有Badge、Sound、Alert三种类型可以设置
     completionHandler(UNNotificationPresentationOptionBadge|
@@ -121,7 +93,7 @@
     
     UNNotificationRequest *request = response.notification.request;
     UNNotificationContent *content = request.content;
-    [CEFService getContent:content];
+//    [CEFNotificationManager getContent:content];
     
     completionHandler();
 }
@@ -143,7 +115,7 @@
 //获取DeviceToken成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
     
-    [CEFService registerDeviceToken:deviceToken profile:^(NSDictionary *profile) {
+    [CEFNotificationManager registerDeviceToken:deviceToken profile:^(NSDictionary *profile) {
         NSLog(@"%@",profile);
     }];
     

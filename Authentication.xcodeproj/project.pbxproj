@@ -39,11 +39,11 @@
 		4ACC673E2004801D0087D995 /* Photos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACC673D2004801D0087D995 /* Photos.framework */; };
 		4ACC67432004CB8A0087D995 /* TencentOpenAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACC67422004CB8A0087D995 /* TencentOpenAPI.framework */; };
 		4ACC67452004CBE60087D995 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4ACC67442004CBE60087D995 /* AssetsLibrary.framework */; };
-		4ACC67482005DD540087D995 /* SocialManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC67472005DD540087D995 /* SocialManager.m */; };
+		4ACC67482005DD540087D995 /* CEFSocialService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC67472005DD540087D995 /* CEFSocialService.m */; };
 		4ACC674B2005E3410087D995 /* WechatManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674A2005E3410087D995 /* WechatManager.m */; };
 		4ACC674E20060DB70087D995 /* WeiboManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC674D20060DB70087D995 /* WeiboManager.m */; };
 		4ACC675120061F0C0087D995 /* QQManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4ACC675020061F0C0087D995 /* QQManager.m */; };
-		4AD4F813208D7DC40091F793 /* CEFService.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F812208D7DC30091F793 /* CEFService.m */; };
+		4AD4F813208D7DC40091F793 /* CEFNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F812208D7DC30091F793 /* CEFNotificationManager.m */; };
 		4AD4F816208DB7780091F793 /* shopping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F815208DB7780091F793 /* shopping.plist */; };
 		4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */; };
 		4AD4F81B208DD2C40091F793 /* PaymentPage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */; };
@@ -103,16 +103,16 @@
 		4ACC673D2004801D0087D995 /* Photos.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Photos.framework; path = System/Library/Frameworks/Photos.framework; sourceTree = SDKROOT; };
 		4ACC67422004CB8A0087D995 /* TencentOpenAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TencentOpenAPI.framework; sourceTree = "<group>"; };
 		4ACC67442004CBE60087D995 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		4ACC67462005DD540087D995 /* SocialManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SocialManager.h; sourceTree = "<group>"; };
-		4ACC67472005DD540087D995 /* SocialManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SocialManager.m; sourceTree = "<group>"; };
+		4ACC67462005DD540087D995 /* CEFSocialService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEFSocialService.h; sourceTree = "<group>"; };
+		4ACC67472005DD540087D995 /* CEFSocialService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEFSocialService.m; sourceTree = "<group>"; };
 		4ACC67492005E3410087D995 /* WechatManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WechatManager.h; sourceTree = "<group>"; };
 		4ACC674A2005E3410087D995 /* WechatManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WechatManager.m; sourceTree = "<group>"; };
 		4ACC674C20060DB70087D995 /* WeiboManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WeiboManager.h; sourceTree = "<group>"; };
 		4ACC674D20060DB70087D995 /* WeiboManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = WeiboManager.m; sourceTree = "<group>"; };
 		4ACC674F20061F0C0087D995 /* QQManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QQManager.h; sourceTree = "<group>"; };
 		4ACC675020061F0C0087D995 /* QQManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQManager.m; sourceTree = "<group>"; };
-		4AD4F811208D7DC30091F793 /* CEFService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEFService.h; sourceTree = "<group>"; };
-		4AD4F812208D7DC30091F793 /* CEFService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEFService.m; sourceTree = "<group>"; };
+		4AD4F811208D7DC30091F793 /* CEFNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CEFNotificationManager.h; sourceTree = "<group>"; };
+		4AD4F812208D7DC30091F793 /* CEFNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CEFNotificationManager.m; sourceTree = "<group>"; };
 		4AD4F814208D89830091F793 /* Authentication.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Authentication.entitlements; sourceTree = "<group>"; };
 		4AD4F815208DB7780091F793 /* shopping.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = shopping.plist; sourceTree = "<group>"; };
 		4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PaymentPageViewController.h; sourceTree = "<group>"; };
@@ -180,12 +180,12 @@
 		4A9B528920073344008F09B1 /* SocialManager */ = {
 			isa = PBXGroup;
 			children = (
-				4AD4F811208D7DC30091F793 /* CEFService.h */,
-				4AD4F812208D7DC30091F793 /* CEFService.m */,
+				4AD4F811208D7DC30091F793 /* CEFNotificationManager.h */,
+				4AD4F812208D7DC30091F793 /* CEFNotificationManager.m */,
 				4AE46D09209060BC008435B4 /* CEFServicePay.h */,
 				4AE46D08209060BC008435B4 /* CEFServicePay.m */,
-				4ACC67462005DD540087D995 /* SocialManager.h */,
-				4ACC67472005DD540087D995 /* SocialManager.m */,
+				4ACC67462005DD540087D995 /* CEFSocialService.h */,
+				4ACC67472005DD540087D995 /* CEFSocialService.m */,
 				4A9B528A2007335D008F09B1 /* PlatformManager */,
 			);
 			path = SocialManager;
@@ -329,12 +329,12 @@
 				4A1B17542089CACD00D26A72 /* ShoppingListViewController.m */,
 				4AD4F817208DD2AB0091F793 /* PaymentPageViewController.h */,
 				4AD4F81A208DD2C40091F793 /* PaymentPage.storyboard */,
-				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
 				4AE46D132091B532008435B4 /* PaymentSuccessPage.storyboard */,
 				4AE46D152091B8D2008435B4 /* PagementSuccessVC.h */,
 				4AE46D162091B8D2008435B4 /* PagementSuccessVC.m */,
 				4ACC66F1200358790087D995 /* ViewController.h */,
 				4ACC66F2200358790087D995 /* ViewController.m */,
+				4AD4F818208DD2AB0091F793 /* PaymentPageViewController.m */,
 				4ACC66F4200358790087D995 /* Main.storyboard */,
 			);
 			path = Controller;
@@ -449,7 +449,7 @@
 				4ACC674B2005E3410087D995 /* WechatManager.m in Sources */,
 				4A1B175B2089CACD00D26A72 /* ShoppingListViewController.m in Sources */,
 				4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */,
-				4ACC67482005DD540087D995 /* SocialManager.m in Sources */,
+				4ACC67482005DD540087D995 /* CEFSocialService.m in Sources */,
 				4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */,
 				4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
@@ -458,7 +458,7 @@
 				4AE46D1A2091C404008435B4 /* WechatProfile.m in Sources */,
 				4ACC675120061F0C0087D995 /* QQManager.m in Sources */,
 				4ACC66F0200358790087D995 /* AppDelegate.m in Sources */,
-				4AD4F813208D7DC40091F793 /* CEFService.m in Sources */,
+				4AD4F813208D7DC40091F793 /* CEFNotificationManager.m in Sources */,
 				4AE46D232091CB99008435B4 /* PersonalProfile.m in Sources */,
 				4A1B175C2089CACD00D26A72 /* shoppingCell.m in Sources */,
 				4AD4F81E208F07ED0091F793 /* MBProgressHUD.m in Sources */,

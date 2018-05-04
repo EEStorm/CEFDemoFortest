@@ -147,11 +147,11 @@
     [sessionDataTask resume];
 }
 
--(void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *)amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack{
+-(void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *)amount callBack:(CEFServicePayResultCallBack)callBack{
     
     self.callBack = callBack;
     
-    [CEFPayManager requestOrderPrepayId: EID channel:channel subject:subject tradeNumber:tradeNumber amount:amount notifyUrl:notifyUrl createOrderCompletion:^(NSString *prepayId,NSString* partnerid,NSString* noncestr,NSString* timestamp,NSString* sign) {
+    [CEFPayManager requestOrderPrepayId: EID channel:channel subject:subject tradeNumber:tradeNumber amount:amount createOrderCompletion:^(NSString *prepayId,NSString* partnerid,NSString* noncestr,NSString* timestamp,NSString* sign) {
         
         
         PayReq *req = [[PayReq alloc] init];
@@ -170,7 +170,7 @@
 }
 
 
--(void)requestOrderPrepayId:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl createOrderCompletion:(CreateOrderCompletion)createOrder{
+-(void)requestOrderPrepayId:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount createOrderCompletion:(CreateOrderCompletion)createOrder{
    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentstaging.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
     
@@ -181,8 +181,7 @@
                                  @"channel":@"WeChat",
                                  @"subject":subject,
                                  @"tradeNumber":tradeNumber,
-                                 @"amount":amount,
-                                 @"notifyUrl":notifyUrl
+                                 @"amount":amount
                                  };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
     request.HTTPBody = data;

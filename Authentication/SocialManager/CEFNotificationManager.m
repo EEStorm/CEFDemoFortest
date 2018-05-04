@@ -1,17 +1,17 @@
 //
-//  CEFService.m
+//  CEFNotificationManager.m
 //  NotificationDemo
 //
 //  Created by zhangDongdong on 2018/4/8.
 //  Copyright © 2018年 micorosoft. All rights reserved.
 //
 
-#import "CEFService.h"
+#import "CEFNotificationManager.h"
 #import "AppDelegate.h"
 
-@implementation CEFService
+@implementation CEFNotificationManager
 
-+(void)registerForRemoteNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion{
++(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion{
     EId = EID;
     NSString *version = [UIDevice currentDevice].systemVersion;
     
@@ -69,7 +69,9 @@
 }
 
 
-+(NSString *)createEIDwithTags:(NSArray *)tags customId:(NSString *)customId EID:(GetEID)eidStr{
++(NSString *)createEIDwithTags:(NSArray *)tags customId:(NSString *)customId{
+    
+    dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     
     CustomId = customId;
     Tags = tags;
@@ -90,10 +92,11 @@
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
         EID = (NSString *)[dict objectForKey:@"eid"];
-        eidStr(EID);
+        
+        dispatch_semaphore_signal(semaphore);
     }];
     [sessionDataTask resume];
-    
+    dispatch_semaphore_wait(semaphore,DISPATCH_TIME_FOREVER);
     return EID;
 }
 

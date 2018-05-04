@@ -1,5 +1,5 @@
 //
-//  SocialManager.h
+//  CEFSocialService.h
 //  Authentication
 //
 //  Created by zhangDongdong on 2018/1/10.
@@ -17,7 +17,7 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 
-
+#define CEFSocialManager [CEFSocialService defaultManager]
 
 typedef enum {
     
@@ -33,7 +33,7 @@ typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 
 
-@interface SocialManager : NSObject<WXApiDelegate>
+@interface CEFSocialService : NSObject<WXApiDelegate>
 
 
 @property(copy,nonatomic)SocialCompletion completion;
@@ -64,11 +64,13 @@ typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 -(void)setPlaform:(Platform)platform appkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL withEID:(NSString *)EID;
 
--(void)getUserInfoWithPlatform:(Platform)platform completion:(SocialCompletion)completion;
+-(void)loginWithPlatform:(Platform)platform completion:(SocialCompletion)completion;
 
 -(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options;
 
+-(void)registerAuthenticationWithEID:(NSString *)EID;
 
+-(void)initWithWeChatKey:(NSString *)wechatAppkey wechatSecret:(NSString*)wechatSecret wechatRedictUrl:(NSString*)wechatRedictUrl QQKey:(NSString *)QQAppkey QQSecret:(NSString*)QQSecret QQRedictUrl:(NSString*)QQRedictUrl WeiBoKey:(NSString *)WeiBoAppkey WeiBoSecret:(NSString*)WeiBoSecret WeiBoRedictUrl:(NSString*)WeiBoRedictUrl;
 @end
 
 
