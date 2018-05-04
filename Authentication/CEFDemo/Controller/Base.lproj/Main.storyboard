@@ -109,6 +109,9 @@
                                         <state key="normal" title="发送验证码">
                                             <color key="titleColor" red="1" green="0.8212161660194397" blue="0.096920602023601532" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="pushMessage:" destination="5l7-yY-30W" eventType="touchUpInside" id="JeL-jk-hyL"/>
+                                        </connections>
                                     </button>
                                     <textField opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="密码" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DAc-Os-NmM">
                                         <rect key="frame" x="20" y="90" width="335" height="30"/>
@@ -213,7 +216,7 @@
                                         <rect key="frame" x="20" y="50" width="335" height="30"/>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done" secureTextEntry="YES"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cqK-iy-r1D">
                                         <rect key="frame" x="293" y="154" width="62" height="40.5"/>

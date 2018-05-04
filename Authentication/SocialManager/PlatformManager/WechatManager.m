@@ -190,7 +190,9 @@
                 
                 
                self.completion(self.result,self.error);
-               
+                
+               [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"WECHATLOGIN"];
+                
                 NSMutableArray *arr = [NSMutableArray array];
                 WechatProfile *wechatProfile = [[WechatProfile alloc]init];
                 wechatProfile.openid = [dic objectForKey:@"openid"];

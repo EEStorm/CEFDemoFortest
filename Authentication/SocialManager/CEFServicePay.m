@@ -1,5 +1,7 @@
 
 #import "CEFServicePay.h"
+
+#import <CommonCrypto/CommonDigest.h>
 /**
  *  此处必须保证在Info.plist 中的 URL Types 的 Identifier 对应一致
  */
@@ -48,7 +50,7 @@
     }
 }
 
-- (void)registerPayment {
+- (void)registerPaymentWithEID:(NSString *)EID {
     NSString *Info_plist_path = [[NSBundle mainBundle] pathForResource:@"Info" ofType:@"plist"];
     NSDictionary *Info_plist_dic = [NSDictionary dictionaryWithContentsOfFile:Info_plist_path];
     NSArray *URL_Types_Array = Info_plist_dic[@"CFBundleURLTypes"];
@@ -58,19 +60,14 @@
         NSString *URL_Name = URL_Type_Dic[@"CFBundleURLName"];
         NSArray *URL_Schemes_Array = URL_Type_Dic[@"CFBundleURLSchemes"];
         NSAssert(URL_Schemes_Array.count, addURLSchemes(URL_Name));
-        // 一般对应只有一个
         NSString *URL_Schemes = URL_Schemes_Array.lastObject;
         
         if ([URL_Name isEqualToString:WeChat_URLTypesIdentifier]) {//微信支付
             [self.URL_Schemes_Dic setValue:URL_Schemes forKey:WeChat_URLTypesIdentifier];
-            // 注册微信 appid 微信开发者ID即 WeChat URL Schemes
             NSLog(@"WeChat_URL_Schemes=appid 微信开发者ID= %@", URL_Schemes);
-            [WXApi registerApp:@"wxa186d3f0aa51c56e"];
+            [WXApi registerApp:URL_Schemes];
             
         } else if ([URL_Name isEqualToString:Alipay_URLTypesIdentifier]){//支付宝
-            // 保存支付宝scheme，以便发起支付使用
-            //注意：这里的URL Schemes，在实际商户的app中要填写独立的scheme，建议跟商户的app有一定的标示度，
-            //要做到和其他的商户app不重复，否则可能会导致支付宝返回的结果无法正确跳回商户app。
             NSLog(@"Alipay_URL_Schemes= %@", URL_Schemes);
             [self.URL_Schemes_Dic setValue:URL_Schemes forKey:Alipay_URLTypesIdentifier];
             
@@ -82,11 +79,11 @@
 
 - (void)CEFServicePayWithOrder:(id)order callBack:(CEFServicePayResultCallBack)callBack {
     NSAssert(order, orderMessage_nil);
-    // 缓存block
+    
     self.callBack = callBack;
-    // 发起支付
+    
     if ([order isKindOfClass:[PayReq class]]) {
-        // 微信
+        
         NSAssert(self.URL_Schemes_Dic[WeChat_URLTypesIdentifier], addURLSchemes(WeChat_URLTypesIdentifier));
         
         [WXApi sendReq:(PayReq *)order];
@@ -95,9 +92,9 @@
 
 #pragma mark - WXApiDelegate
 - (void)onResp:(BaseResp *)resp {
-    // 判断支付类型
+    
     if([resp isKindOfClass:[PayResp class]]){
-        //支付回调
+        
         CEFServicePayResult errorCode = CEFServicePayResultSuccess;
         NSString *errStr = resp.errStr;
         switch (resp.errCode) {
@@ -105,6 +102,7 @@
                 errorCode = CEFServicePayResultSuccess;
                 errStr = @"订单支付成功";
                 [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"PAYSUCCESS"];
+                [self paySuccess];
                 break;
             case -1:
                 errorCode = CEFServicePayResultFailure;
@@ -125,7 +123,57 @@
     }
 }
 
--(void)requestOrderPrepayId:(NSString *)EID createOrderCompletion:(CreateOrderCompletion)createOrder{
+-(void)paySuccess{
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cefsfcluster.chinanorth.cloudapp.chinacloudapi.cn/mock/sendsms"]];
+    
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    NSString *msg = [NSString stringWithFormat:@"支付成功，您消费了 0.01 元"];
+    
+    NSString *phone = [[NSUserDefaults standardUserDefaults]objectForKey:@"PHONE"];
+    NSDictionary *dictPramas = @{@"mobile":phone,
+                                 @"msg":msg
+                                 };
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
+    request.HTTPBody = data;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+        NSLog(@"%@",dict);
+    }];
+    [sessionDataTask resume];
+}
+
+-(void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel tradeNumber:(NSString *)tradeNumber amount:(NSString *)amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack{
+    
+    self.callBack = callBack;
+    
+    [CEFPayManager requestOrderPrepayId: EID channel:channel tradeNumber:tradeNumber amount:amount notifyUrl:notifyUrl createOrderCompletion:^(NSString *prepayId) {
+        
+        
+        PayReq *req = [[PayReq alloc] init];
+        req.partnerId = @"1502289851";
+        req.prepayId= prepayId;
+        req.package = @"Sign=WXPay";
+        req.nonceStr= @"5K8264ILTKCH16CQ2502SI8ZNMTM67VS";
+        req.timeStamp= @"1412000000".intValue;
+        
+        NSString *signStr = [NSString stringWithFormat:@"appid=wxa186d3f0aa51c56e&noncestr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=Sign=WXPay&partnerid=1502289851&prepayid=%@&timestamp=1412000000&key=cefacedjfioakckjguqnqk91701dadj1",prepayId];
+        NSString *sign = [self md5:signStr];
+        
+        req.sign= sign;
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [CEFPayManager CEFServicePayWithOrder:req callBack:callBack];
+        });
+    }];
+}
+
+
+-(void)requestOrderPrepayId:(NSString *)EID channel:(Channel)channel tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl createOrderCompletion:(CreateOrderCompletion)createOrder{
    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentstaging.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
     
@@ -165,6 +213,22 @@
         _URL_Schemes_Dic = [NSMutableDictionary dictionary];
     }
     return _URL_Schemes_Dic;
+}
+
+-(NSString *) md5:(NSString *)str
+{
+    const char *cStr = [str UTF8String];
+    //加密规则，因为逗比微信没有出微信支付demo，这里加密规则是参照安卓demo来得
+    unsigned char result[16]= "0123456789abcdef";
+    CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
+    //这里的x是小写则产生的md5也是小写，x是大写则md5是大写，这里只能用大写，逗比微信的大小写验证很逗
+    return [NSString stringWithFormat:
+            @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
+            result[0], result[1], result[2], result[3],
+            result[4], result[5], result[6], result[7],
+            result[8], result[9], result[10], result[11],
+            result[12], result[13], result[14], result[15]
+            ];
 }
 
 @end

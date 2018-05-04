@@ -121,12 +121,49 @@
 
     }
 }
+
+- (IBAction)pushMessage:(id)sender {
+
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://cefsfcluster.chinanorth.cloudapp.chinacloudapi.cn/mock/sendsms"]];
+    
+    NSMutableURLRequest *request =[NSMutableURLRequest requestWithURL:url];
+    request.HTTPMethod = @"POST";
+    [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
+    int randomStr = 1000 +  (arc4random() % 101);
+    NSString *msg = [NSString stringWithFormat:@"您的短信验证码是 %d",randomStr];
+    NSString *phone = @"";
+    if (![self.registerView_phoneNumber.text isEqual:@""]) {
+        phone = self.registerView_phoneNumber.text;
+    }
+    NSDictionary *dictPramas = @{@"mobile":phone,
+                                 @"msg":msg
+                                 };
+    
+    [[NSUserDefaults standardUserDefaults]setInteger:randomStr forKey:@"RANDOMSTR"];
+    
+    NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
+    request.HTTPBody = data;
+    
+    NSURLSession *session = [NSURLSession sharedSession];
+    NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+        NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
+        NSLog(@"%@",dict);
+    }];
+    [sessionDataTask resume];
+
+}
+
+
+
+
+
+
 - (IBAction)weixinLogin:(id)sender {
     
     [[SocialManager defaultManager]getUserInfoWithPlatform:wechat completion:^(NSDictionary *result, NSInteger *error) {
 
          NSLog(@"%@",result);
-        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"WECHATLOGIN"];
+        
         [self presentCompleteVC:@"weixin"];
     }];
 }
@@ -136,7 +173,7 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:QQ completion:^(NSDictionary *result, NSInteger *error) {
 
         NSLog(@"%@",result);
-        [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"QQLOGIN"];
+        
         [self presentCompleteVC:@"QQ"];
 
     }];
@@ -148,6 +185,7 @@
     [[SocialManager defaultManager]getUserInfoWithPlatform:weibo completion:^(NSDictionary *result, NSInteger *error) {
         
         NSLog(@"%@",result);
+        
         [self presentCompleteVC:@"weibo"];
     }];
 }

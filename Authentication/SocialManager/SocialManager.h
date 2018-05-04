@@ -62,7 +62,7 @@ typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 +(instancetype)defaultManager;
 
--(void)setPlaform:(Platform)platform appkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL;
+-(void)setPlaform:(Platform)platform appkey:(NSString *)appkey appSecret:(NSString *)appSecret redirectURL:(NSString *)redirectURL withEID:(NSString *)EID;
 
 -(void)getUserInfoWithPlatform:(Platform)platform completion:(SocialCompletion)completion;
 

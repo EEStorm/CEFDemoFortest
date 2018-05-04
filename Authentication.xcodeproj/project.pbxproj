@@ -604,7 +604,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Authentication",
 				);
-				GCC_PREFIX_HEADER = "/Users/zhangdongdong/Documents/CEF/CEFDemoFortest/Authentication/Support File/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/zhangdongdong/Documents/CEF/CEF-ios/CEFDemoFortest/Authentication/Support File/PrefixHeader.pch";
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -635,7 +635,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Authentication",
 				);
-				GCC_PREFIX_HEADER = "/Users/zhangdongdong/Documents/CEF/CEFDemoFortest/Authentication/Support File/PrefixHeader.pch";
+				GCC_PREFIX_HEADER = "/Users/zhangdongdong/Documents/CEF/CEF-ios/CEFDemoFortest/Authentication/Support File/PrefixHeader.pch";
 				INFOPLIST_FILE = Authentication/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (

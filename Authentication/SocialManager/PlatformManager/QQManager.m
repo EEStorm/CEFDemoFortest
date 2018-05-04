@@ -172,6 +172,8 @@
     NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/QQ.archive"];
     [NSKeyedArchiver archiveRootObject:arr toFile:path];
    
+    [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"QQLOGIN"];
+
     self.completion(response.jsonResponse, 0);
     
 }

@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/SocialManager/PlatformManager/QQManager.m"
-            timestampString = "547018733.504477"
+            timestampString = "547104345.608369"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "159"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/CEFDemo/DAL/PersonalProfile.m"
-            timestampString = "547018733.5047849"
+            timestampString = "547102614.893401"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "63"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/CEFDemo/DAL/PersonalProfile.m"
-            timestampString = "547018733.504977"
+            timestampString = "547102614.89346"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "61"
@@ -68,13 +68,93 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Authentication/CEFDemo/DAL/PersonalProfile.m"
-            timestampString = "547018733.5050319"
+            timestampString = "547102614.89351"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "119"
             endingLineNumber = "119"
             landmarkName = "-uploadProfile"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Authentication/CEFDemo/Controller/ViewController.m"
+            timestampString = "547104345.6085711"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "127"
+            endingLineNumber = "127"
+            landmarkName = "-pushMessage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Authentication/CEFDemo/Controller/ViewController.m"
+            timestampString = "547104345.6086299"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "150"
+            endingLineNumber = "150"
+            landmarkName = "-pushMessage:"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Authentication/SocialManager/CEFServicePay.m"
+            timestampString = "547104345.608692"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "154"
+            endingLineNumber = "154"
+            landmarkName = "-CEFServicePayWithEID:channel:tradeNumber:amount:notifyUrl:callBack:"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "-[CEFServicePay CEFServicePayWithEID:channel:tradeNumber:amount:notifyUrl:]"
+                  moduleName = "Authentication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangdongdong/Documents/CEF/CEF-ios/CEFDemoFortest/Authentication/SocialManager/CEFServicePay.m"
+                  timestampString = "547100429.4500099"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "172">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "__75-[CEFServicePay CEFServicePayWithEID:channel:tradeNumber:amount:notifyUrl:]_block_invoke"
+                  moduleName = "Authentication"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/zhangdongdong/Documents/CEF/CEF-ios/CEFDemoFortest/Authentication/SocialManager/CEFServicePay.m"
+                  timestampString = "547100429.451843"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "127"
+                  endingLineNumber = "127"
+                  offsetFromSymbolStart = "24">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

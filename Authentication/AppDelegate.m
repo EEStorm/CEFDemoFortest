@@ -38,27 +38,43 @@
     // Override point for customization after application launch.
 
 //
-    [CEFPayManager registerPayment];
-    CEFPayManager.aliPayEnable = false;
     
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+    
     if (EID) {
+        
+        // Payment
+        [CEFPayManager registerPaymentWithEID:EID];
+        
+        // Authentication
+        [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil withEID:EID];
+        [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"" withEID:EID];
+        [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"" withEID:EID];
+        
+        // Notification
         [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
 
-            //        NSLog(@"%@",dict);
         } successCompletion:^{
 
         } failedCompletion:^{
 
         }];
     }else {
+        
+        [CEFPayManager registerPaymentWithEID:EID];
+        
+        
+        [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil withEID:EID];
+        [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"" withEID:EID];
+        [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"" withEID:EID];
+        
+        
         [CEFService createEIDwithTags:@[@"Beijing"] customId:@"storm" EID:^(NSString *EID) {
 
             [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
 
             [CEFService registerForRemoteNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
 
-                //        NSLog(@"%@",dict);
             } successCompletion:^{
 
             } failedCompletion:^{
@@ -68,11 +84,7 @@
     }
 
     
-    [[SocialManager defaultManager] setPlaform:wechat appkey:URL_APPID appSecret:URL_SECRET redirectURL:nil];
     
-    [[SocialManager defaultManager] setPlaform:weibo appkey:IFM_SinaAPPKey appSecret:IFM_SinaAppSecret redirectURL:@"http://www.baidu.com"];
-
-    [[SocialManager defaultManager] setPlaform:QQ appkey:QQ_APPID appSecret:QQ_SECRET redirectURL:@"http://com.infomedia.p3kapp"];
     
     return YES;
 }
@@ -85,13 +97,6 @@
     return YES;
 }
 
-//- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation{
-//    return [TencentOAuth HandleOpenURL:url];
-//}
-//
-//- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
-//    return [TencentOAuth HandleOpenURL:url];
-//}
 
 
 #pragma mark - iOS10 收到通知（本地和远端） UNUserNotificationCenterDelegate
@@ -118,7 +123,7 @@
     UNNotificationContent *content = request.content;
     [CEFService getContent:content];
     
-    completionHandler(); // 系统要求执行这个方法
+    completionHandler();
 }
 
 
@@ -126,20 +131,17 @@
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     NSLog(@"iOS6及以下系统，收到通知:%@", userInfo);
-    //此处省略一万行需求代码。。。。。。
 }
 
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
     NSLog(@"iOS7及以上系统，收到通知:%@", userInfo);
     completionHandler(UIBackgroundFetchResultNewData);
-    //此处省略一万行需求代码。。。。。。
 }
 
 
 #pragma  mark - 获取device Token
 //获取DeviceToken成功
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken{
-    
     
     [CEFService registerDeviceToken:deviceToken profile:^(NSDictionary *profile) {
         NSLog(@"%@",profile);
