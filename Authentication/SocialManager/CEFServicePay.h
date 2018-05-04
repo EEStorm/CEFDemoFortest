@@ -19,7 +19,7 @@ typedef enum {
 } Channel;
 
 typedef void(^CEFServicePayResultCallBack)(CEFServicePayResult payResult, NSString *errorMessage);
-typedef void(^CreateOrderCompletion)(NSString*);
+typedef void(^CreateOrderCompletion)(NSString* prepayId,NSString* partnerid,NSString* noncestr,NSString* timestamp,NSString* sign);
 
 @interface CEFServicePay : NSObject
 
@@ -32,6 +32,6 @@ typedef void(^CreateOrderCompletion)(NSString*);
 
 - (void)registerPaymentWithEID:(NSString *)EID;
 
-- (void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack;
+- (void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack;
 
 @end

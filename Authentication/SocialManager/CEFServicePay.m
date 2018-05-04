@@ -147,23 +147,20 @@
     [sessionDataTask resume];
 }
 
--(void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel tradeNumber:(NSString *)tradeNumber amount:(NSString *)amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack{
+-(void)CEFServicePayWithEID:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *)amount notifyUrl:(NSString *)notifyUrl callBack:(CEFServicePayResultCallBack)callBack{
     
     self.callBack = callBack;
     
-    [CEFPayManager requestOrderPrepayId: EID channel:channel tradeNumber:tradeNumber amount:amount notifyUrl:notifyUrl createOrderCompletion:^(NSString *prepayId) {
+    [CEFPayManager requestOrderPrepayId: EID channel:channel subject:subject tradeNumber:tradeNumber amount:amount notifyUrl:notifyUrl createOrderCompletion:^(NSString *prepayId,NSString* partnerid,NSString* noncestr,NSString* timestamp,NSString* sign) {
         
         
         PayReq *req = [[PayReq alloc] init];
-        req.partnerId = @"1502289851";
+        req.partnerId = partnerid;
         req.prepayId= prepayId;
         req.package = @"Sign=WXPay";
-        req.nonceStr= @"5K8264ILTKCH16CQ2502SI8ZNMTM67VS";
-        req.timeStamp= @"1412000000".intValue;
-        
-        NSString *signStr = [NSString stringWithFormat:@"appid=wxa186d3f0aa51c56e&noncestr=5K8264ILTKCH16CQ2502SI8ZNMTM67VS&package=Sign=WXPay&partnerid=1502289851&prepayid=%@&timestamp=1412000000&key=cefacedjfioakckjguqnqk91701dadj1",prepayId];
-        NSString *sign = [self md5:signStr];
-        
+        req.nonceStr= noncestr;
+        req.timeStamp= timestamp.intValue;
+  
         req.sign= sign;
         
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -173,7 +170,7 @@
 }
 
 
--(void)requestOrderPrepayId:(NSString *)EID channel:(Channel)channel tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl createOrderCompletion:(CreateOrderCompletion)createOrder{
+-(void)requestOrderPrepayId:(NSString *)EID channel:(Channel)channel subject:(NSString *)subject tradeNumber:(NSString *)tradeNumber amount:(NSString *) amount notifyUrl:(NSString *)notifyUrl createOrderCompletion:(CreateOrderCompletion)createOrder{
    
     NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://xzshengpaymentstaging.eastasia.cloudapp.azure.com/serviceProviders/payment/createOrder"]];
     
@@ -182,10 +179,10 @@
     [request setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
     NSDictionary *dictPramas = @{@"eid":EID,
                                  @"channel":@"WeChat",
-                                 @"subject":@"Test",
-                                 @"tradeNumber":@"DevTradeNumber001",
-                                 @"amount":@"1",
-                                 @"notifyUrl":@"https://xzshengwebhookwatcher.azurewebsites.net/api/weChatPaymentWebhook"
+                                 @"subject":subject,
+                                 @"tradeNumber":tradeNumber,
+                                 @"amount":amount,
+                                 @"notifyUrl":notifyUrl
                                  };
     NSData *data = [NSJSONSerialization dataWithJSONObject:dictPramas options:0 error:nil];
     request.HTTPBody = data;
@@ -193,11 +190,16 @@
     NSURLSession *session = [NSURLSession sharedSession];
     NSURLSessionDataTask *sessionDataTask = [session dataTaskWithRequest:request completionHandler:^(NSData * _Nullable data, NSURLResponse * _Nullable response, NSError * _Nullable error) {
         NSDictionary *dict = [NSJSONSerialization JSONObjectWithData:data options:(NSJSONReadingMutableLeaves) error:nil];
-//        EID = (NSString *)[dict objectForKey:@"eid"];
-//        eidStr(EID);
+
         NSDictionary *properties = (NSDictionary *)[dict objectForKey:@"properties"];
+        
         NSString *prepayId = [properties objectForKey:@"prepayid"];
-        createOrder(prepayId);
+        NSString *partnerid = [properties objectForKey:@"partnerid"];
+        NSString *noncestr = [properties objectForKey:@"noncestr"];
+        NSString *timestamp = [properties objectForKey:@"timestamp"];
+        NSString *sign = [properties objectForKey:@"sign"];
+//        NSString *orderId = [properties objectForKey:@"orderId"];
+        createOrder(prepayId,partnerid,noncestr,timestamp,sign);
         NSLog(@"%@",prepayId);
         
         
@@ -213,22 +215,6 @@
         _URL_Schemes_Dic = [NSMutableDictionary dictionary];
     }
     return _URL_Schemes_Dic;
-}
-
--(NSString *) md5:(NSString *)str
-{
-    const char *cStr = [str UTF8String];
-    //加密规则，因为逗比微信没有出微信支付demo，这里加密规则是参照安卓demo来得
-    unsigned char result[16]= "0123456789abcdef";
-    CC_MD5(cStr, (CC_LONG)strlen(cStr), result);
-    //这里的x是小写则产生的md5也是小写，x是大写则md5是大写，这里只能用大写，逗比微信的大小写验证很逗
-    return [NSString stringWithFormat:
-            @"%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X%02X",
-            result[0], result[1], result[2], result[3],
-            result[4], result[5], result[6], result[7],
-            result[8], result[9], result[10], result[11],
-            result[12], result[13], result[14], result[15]
-            ];
 }
 
 @end

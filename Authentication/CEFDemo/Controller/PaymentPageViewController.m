@@ -43,7 +43,9 @@
     
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     
-    [CEFPayManager CEFServicePayWithEID:EID channel:WeChat
+    [CEFPayManager CEFServicePayWithEID:EID
+                                channel:WeChat
+                                subject:@"Test"
                             tradeNumber:@"DevTradeNumber001"
                                  amount:@"1"
                               notifyUrl:@"https://xzshengwebhookwatcher.azurewebsites.net/api/weChatPaymentWebhook"
