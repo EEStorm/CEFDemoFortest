@@ -109,6 +109,13 @@
      WXErrCodeUnsupport  = -5,   微信不支持
      };
      */
+    
+    CEFResp *cefresp = [[CEFResp alloc]init];
+    cefresp.errCode = resp.errCode;
+    cefresp.errStr = resp.errStr;
+    cefresp.type = resp.type;
+    [CEFSocialManager.CEFApiDel onResopnse:cefresp];
+    
     if ([resp isKindOfClass:[SendAuthResp class]]) {   //授权登录的类。
         if (resp.errCode == 0) {  //成功。
             //这里处理回调的方法 。 通过代理吧对应的登录消息传送过去。
@@ -208,8 +215,7 @@
                 NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/wechat.archive"];
                 [NSKeyedArchiver archiveRootObject:arr toFile:path];
                 
-                
-                //                [self loginWithOpenId:openId memNickName:memNickName memSex:memSex];
+
             }
         });
         

@@ -18,4 +18,8 @@
 #import "WechatProfile.h"
 #import "MBProgressHUD.h"
 #import "QQProfile.h"
+#import "CEFSocialService.h"
+
+#define CEFSocialManager [CEFSocialService defaultManager]
+
 #endif /* PrefixHeader_pch */

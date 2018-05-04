@@ -23,11 +23,13 @@ static CEFSocialService *_instance;
     
 }
 
--(void)registerAuthenticationWithEID:(NSString *)EID {
+-(void)registerAuthenticationWithEID:(NSString *)EID delegate:(id<CEFApiDelegate>)delegate{
     
     [[CEFSocialService defaultManager] setPlaform:wechat appkey:self.wechatAppkey appSecret:self.wechatSecret redirectURL:nil withEID:EID];
     [[CEFSocialService defaultManager] setPlaform:weibo appkey:self.weiboAppkey appSecret:self.weiboSecret redirectURL:@"" withEID:EID];
     [[CEFSocialService defaultManager] setPlaform:QQ appkey:self.qqAppkey appSecret:self.qqSecret redirectURL:@"" withEID:EID];
+    
+    self.CEFApiDel = delegate;
 }
 
 

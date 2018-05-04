@@ -27,7 +27,7 @@
 #import <UserNotifications/UserNotifications.h>
 #endif
 
-@interface AppDelegate ()
+@interface AppDelegate ()<CEFApiDelegate>
 
 @end
 
@@ -48,7 +48,7 @@
     
     [CEFPayManager registerPaymentWithEID:EID];
     
-    [CEFSocialManager registerAuthenticationWithEID:EID];
+    [CEFSocialManager registerAuthenticationWithEID:EID delegate:self];
     
     [CEFNotificationManager registerNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
         
@@ -153,6 +153,9 @@
         }
 }
 
+-(void)onResopnse:(CEFResp *)cefResp {
+    
+}
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.

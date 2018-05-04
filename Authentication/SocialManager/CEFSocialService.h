@@ -17,23 +17,52 @@
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
 
-#define CEFSocialManager [CEFSocialService defaultManager]
 
 typedef enum {
     
     wechat = 0,
-
+    
     QQ = 1,
-
+    
     weibo = 2
     
 } Platform;
+
+enum  CEFErrCode {
+    CEFSuccess           = 0,    //成功
+    CEFErrCodeCommon     = -1,  //普通错误类型
+    CEFErrCodeUserCancel = -2,    //用户点击取消并返回
+    CEFErrCodeSentFail   = -3,   //发送失败
+    CEFErrCodeAuthDeny   = -4,    //授权失败
+    CEFErrCodeUnsupport  = -5,   //微信不支持
+};
+
+
+@interface CEFResp : NSObject
+/** 错误码 */
+@property (nonatomic, assign) int errCode;
+/** 错误提示字符串 */
+@property (nonatomic, retain) NSString *errStr;
+/** 响应类型 */
+@property (nonatomic, assign) int type;
+/** 平台类型 */
+@property (nonatomic, assign) int channel;
+
+@end
+
+
+@protocol CEFApiDelegate <NSObject>
+
+@optional
+- (void)onResopnse:(CEFResp*) cefResp;
+@end
+
 
 typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 
 
-@interface CEFSocialService : NSObject<WXApiDelegate>
+@interface CEFSocialService : NSObject<WXApiDelegate,CEFApiDelegate>
 
 
 @property(copy,nonatomic)SocialCompletion completion;
@@ -57,7 +86,7 @@ typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 @property(assign,nonatomic)NSString * qqAppkey;
 @property(assign,nonatomic)NSString * qqSecret;
 @property(assign,nonatomic)NSString * qqRedirectURL;
-
+@property(nonatomic,weak)id<CEFApiDelegate> CEFApiDel;
 
 
 +(instancetype)defaultManager;
@@ -68,9 +97,10 @@ typedef void(^SocialCompletion)(NSDictionary *result, NSInteger *error);
 
 -(BOOL)handleOpenURL:(NSURL *)url options:(NSDictionary<NSString *,id> *)options;
 
--(void)registerAuthenticationWithEID:(NSString *)EID;
+-(void)registerAuthenticationWithEID:(NSString *)EID delegate:(id<CEFApiDelegate>) delegate;
 
 -(void)initWithWeChatKey:(NSString *)wechatAppkey wechatSecret:(NSString*)wechatSecret wechatRedictUrl:(NSString*)wechatRedictUrl QQKey:(NSString *)QQAppkey QQSecret:(NSString*)QQSecret QQRedictUrl:(NSString*)QQRedictUrl WeiBoKey:(NSString *)WeiBoAppkey WeiBoSecret:(NSString*)WeiBoSecret WeiBoRedictUrl:(NSString*)WeiBoRedictUrl;
+
 @end
 
 

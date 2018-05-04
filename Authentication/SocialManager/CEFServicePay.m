@@ -93,6 +93,12 @@
 #pragma mark - WXApiDelegate
 - (void)onResp:(BaseResp *)resp {
     
+    CEFResp *cefresp = [[CEFResp alloc]init];
+    cefresp.errCode = resp.errCode;
+    cefresp.errStr = resp.errStr;
+    cefresp.type = resp.type;
+    [CEFSocialManager.CEFApiDel onResopnse:cefresp];
+    
     if([resp isKindOfClass:[PayResp class]]){
         
         CEFServicePayResult errorCode = CEFServicePayResultSuccess;
