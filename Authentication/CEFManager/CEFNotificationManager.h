@@ -34,7 +34,7 @@ static NSString *EId;
 
 +(NSString *)createEIDwithTags:(NSArray*)tags customId:(NSString*)customId;
 
-+(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
++(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
 
 +(void)registerDeviceToken:(NSData *)deviceToken profile:(Profile)profile;
 

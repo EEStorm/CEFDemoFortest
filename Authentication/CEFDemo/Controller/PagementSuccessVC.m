@@ -9,6 +9,7 @@
 #import "PagementSuccessVC.h"
 
 @interface PagementSuccessVC ()
+@property (weak, nonatomic) IBOutlet UILabel *nickname;
 
 @end
 
@@ -17,6 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.nickname.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"CEFNICKNAME"];
 }
 
 - (void)didReceiveMemoryWarning {

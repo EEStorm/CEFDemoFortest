@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *alipayView;
 @property (weak, nonatomic) IBOutlet UIView *unionPayView;
 @property (weak, nonatomic) IBOutlet UILabel *subjectLable;
+@property (weak, nonatomic) IBOutlet UILabel *nickname;
 @property (nonatomic,assign)NSInteger paylistCount;
 @property (nonatomic,strong)NSString *subject;
 @end
@@ -33,6 +34,7 @@
     self.view.backgroundColor = [UIColor whiteColor];
     self.navigationController.navigationBarHidden = true;
     
+    self.nickname.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"CEFNICKNAME"];
     self.subjectLable.text = self.subject;
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(wechatPay:)];

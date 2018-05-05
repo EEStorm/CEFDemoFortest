@@ -11,7 +11,7 @@
 
 @implementation CEFNotificationManager
 
-+(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID profile:(Profile)profile successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion{
++(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion{
     EId = EID;
     NSString *version = [UIDevice currentDevice].systemVersion;
     

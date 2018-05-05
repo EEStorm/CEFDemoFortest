@@ -196,10 +196,10 @@
                 
                 self.result = dic;
                 
+                [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"WECHATLOGIN"];
+                [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"nickname"] forKey:@"NICKNAME"];
                 
                self.completion(self.result,self.error);
-                
-               [[NSUserDefaults standardUserDefaults]setBool:true forKey:@"WECHATLOGIN"];
                 
                 NSMutableArray *arr = [NSMutableArray array];
                 WechatProfile *wechatProfile = [[WechatProfile alloc]init];

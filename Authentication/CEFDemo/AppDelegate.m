@@ -50,9 +50,7 @@
     
     [CEFSocialManager registerAuthenticationWithEID:EID delegate:self];
     
-    [CEFNotificationManager registerNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID profile:^(NSDictionary * dict) {
-        
-    } successCompletion:^{
+    [CEFNotificationManager registerNotifications:(UNAuthorizationOptionBadge | UNAuthorizationOptionSound | UNAuthorizationOptionAlert) delegate:self EID:EID successCompletion:^{
         
     } failedCompletion:^{
         
@@ -154,6 +152,7 @@
 }
 
 -(void)onResopnse:(CEFResponse *)CEFResponse {
+    
     
 }
 

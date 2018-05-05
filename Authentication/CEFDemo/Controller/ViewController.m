@@ -84,6 +84,11 @@
     
     if ([self.registerView_password.text isEqualToString:self.registerView_comfirmPassword.text]) {
         
+        [[NSUserDefaults standardUserDefaults]setObject:self.registerView_phoneNumber.text forKey:@"PHONE"];
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:@"NICKNAME"] == nil) {
+            
+            [[NSUserDefaults standardUserDefaults]setObject:self.registerView_phoneNumber.text forKey:@"NICKNAME"];
+        }
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         NSString *phoneNum = self.registerView_phoneNumber.text;
         NSString *password = self.registerView_password.text;
@@ -209,8 +214,9 @@
         PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
         [personalProfile uploadProfile];
     }else {
-        
+        [[NSUserDefaults standardUserDefaults]setObject:self.registerView_phoneNumber.text forKey:@"PHONE"];
         UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"CompleteProfile" bundle:nil];
+        
         CompleteProfileController *profileController = [CompleteStoryboard instantiateInitialViewController];
         profileController.type = type;
         [self presentViewController:profileController animated:0.3 completion:^{
@@ -233,7 +239,8 @@
 }
 -(void)viewWillAppear:(BOOL)animated {
     [self.navigationController.view sendSubviewToBack:self.navigationController.navigationBar];
-    
+    self.registerView_registerBtnClick.enabled = false;
+    self.loginView_loginBtnClick.enabled = false;
 }
 
 -(void)viewDidDisappear:(BOOL)animated {
@@ -288,7 +295,7 @@
     self.registerView_comfirmPassword.text = @"";
     
     self.registerView_registerBtnClick.backgroundColor = [UIColor lightGrayColor];
-    self.registerView_registerBtnClick.enabled = true;
+    self.registerView_registerBtnClick.enabled = false;
 }
 
 
@@ -353,10 +360,6 @@
     return true;
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 
 @end

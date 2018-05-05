@@ -168,6 +168,8 @@
     qqPofile.province = [dic objectForKey:@"province"];
     [arr addObject:qqPofile];
     
+    [[NSUserDefaults standardUserDefaults]setObject:[dic objectForKey:@"nickname"] forKey:@"NICKNAME"];
+    
     NSString *homePath = NSHomeDirectory();
     NSString *path = [homePath stringByAppendingPathComponent:@"Library/Caches/QQ.archive"];
     [NSKeyedArchiver archiveRootObject:arr toFile:path];

@@ -56,8 +56,9 @@
     [personIcon addGestureRecognizer:tapGesture];
     
     
-    UILabel *personLable = [[UILabel alloc]initWithFrame:CGRectMake(36+80, 44+30, 80, 30)];
-    personLable.text = @"李菁";
+    UILabel *personLable = [[UILabel alloc]initWithFrame:CGRectMake(36+80, 44+30, 200, 30)];
+    
+    personLable.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"CEFNICKNAME"];
     [self.view addSubview:personLable];
     [self.view addSubview:personIcon];
     
@@ -77,11 +78,9 @@
 
 -(void)logout:(UITapGestureRecognizer *)gesture{
     
-    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:@"" message:@"您确定要注销用户么" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertController * alertController = [UIAlertController alertControllerWithTitle:nil message:nil preferredStyle:UIAlertControllerStyleActionSheet];
     
-    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
-    
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnullaction) {
+    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"退出登录" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnullaction) {
         UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         ViewController *loginVC = [CompleteStoryboard instantiateInitialViewController];
         
@@ -91,9 +90,28 @@
         [vc removeFromParentViewController];
     }];
     
-    [alertController addAction:cancelAction];
+    UIAlertAction *logoutAction = [UIAlertAction actionWithTitle:@"注销用户" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnullaction) {
+        
+        NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
+        NSString *appDomain = [[NSBundle mainBundle] bundleIdentifier];
+        [[NSUserDefaults standardUserDefaults] removePersistentDomainForName:appDomain];
+        
+        UIStoryboard *CompleteStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        ViewController *loginVC = [CompleteStoryboard instantiateInitialViewController];
+        
+        AppDelegate *app = (AppDelegate*)[UIApplication sharedApplication].delegate;
+        UIViewController *vc = app.window.rootViewController;
+        app.window.rootViewController = loginVC;
+        [vc removeFromParentViewController];
+    }];
+    
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
     
     [alertController addAction:okAction];
+    [alertController addAction:logoutAction];
+    [alertController addAction:cancelAction];
+    
     
     [self presentViewController:alertController animated:YES completion:nil];
     

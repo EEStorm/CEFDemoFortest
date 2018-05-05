@@ -31,6 +31,10 @@
     [[NSUserDefaults standardUserDefaults]setObject:self.phonenumberFeild.text forKey:@"PHONE"];
     [[NSUserDefaults standardUserDefaults]setObject:self.emailFeild.text forKey:@"EMAIL"];
     
+    
+    [[NSUserDefaults standardUserDefaults]setObject:self.usernameFeild.text forKey:@"CEFNICKNAME"];
+    
+    
     PersonalProfile *personalProfile = [[PersonalProfile alloc]init];
     [personalProfile uploadProfile];
     
@@ -53,6 +57,13 @@
     self.view.userInteractionEnabled = YES;
     UITapGestureRecognizer * tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(resignFeild:)];
     [self.view addGestureRecognizer:tapGesture];
+    
+    NSString *phone = [[NSUserDefaults standardUserDefaults]objectForKey:@"PHONE"];
+    if (![phone isEqual:@""]) {
+        self.phonenumberFeild.text = phone;
+    }
+    
+    self.usernameFeild.text = [[NSUserDefaults standardUserDefaults]objectForKey:@"NICKNAME"];
     
 }
 
