@@ -20,6 +20,7 @@
 #import "QQProfile.h"
 #import "CEFSocialService.h"
 #import "CEFResponse.h"
+#import "CEFServiceManager.h"
 
 #define CEFSocialManager [CEFSocialService defaultManager]
 

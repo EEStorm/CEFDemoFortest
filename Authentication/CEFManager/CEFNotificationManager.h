@@ -32,7 +32,6 @@ static NSString *EId;
 
 @property (nonatomic, assign) NSString * EID;
 
-+(NSString *)createEIDwithTags:(NSArray*)tags customId:(NSString*)customId;
 
 +(void)registerNotifications:(UNAuthorizationOptions)entity delegate:(id)delegate EID:(NSString *)EID successCompletion:(Completion)successCompletion failedCompletion:(Completion)failedCompletion;
 

@@ -57,6 +57,7 @@
 		4AE46D262091DAFD008435B4 /* QQProfile.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D252091DAFD008435B4 /* QQProfile.m */; };
 		4AE46D2E209C6792008435B4 /* CEFResponse.h in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D2D209C6650008435B4 /* CEFResponse.h */; };
 		4AE46D30209C697E008435B4 /* CEFResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D2F209C697E008435B4 /* CEFResponse.m */; };
+		4AE46D8220A43E25008435B4 /* CEFServiceManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 4AE46D8120A43E25008435B4 /* CEFServiceManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +138,8 @@
 		4AE46D252091DAFD008435B4 /* QQProfile.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QQProfile.m; sourceTree = "<group>"; };
 		4AE46D2D209C6650008435B4 /* CEFResponse.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEFResponse.h; sourceTree = "<group>"; };
 		4AE46D2F209C697E008435B4 /* CEFResponse.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEFResponse.m; sourceTree = "<group>"; };
+		4AE46D8020A43E25008435B4 /* CEFServiceManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CEFServiceManager.h; sourceTree = "<group>"; };
+		4AE46D8120A43E25008435B4 /* CEFServiceManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CEFServiceManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +189,8 @@
 		4A9B528920073344008F09B1 /* CEFManager */ = {
 			isa = PBXGroup;
 			children = (
+				4AE46D8020A43E25008435B4 /* CEFServiceManager.h */,
+				4AE46D8120A43E25008435B4 /* CEFServiceManager.m */,
 				4AD4F811208D7DC30091F793 /* CEFNotificationManager.h */,
 				4AD4F812208D7DC30091F793 /* CEFNotificationManager.m */,
 				4AE46D09209060BC008435B4 /* CEFServicePay.h */,
@@ -458,6 +463,7 @@
 				4A1B17592089CACD00D26A72 /* CompleteProfileController.m in Sources */,
 				4ACC67482005DD540087D995 /* CEFSocialService.m in Sources */,
 				4A1B17572089CACD00D26A72 /* ShoppingListModel.m in Sources */,
+				4AE46D8220A43E25008435B4 /* CEFServiceManager.m in Sources */,
 				4AD4F819208DD2AB0091F793 /* PaymentPageViewController.m in Sources */,
 				4ACC66F3200358790087D995 /* ViewController.m in Sources */,
 				4AE46D0A209060BC008435B4 /* CEFServicePay.m in Sources */,

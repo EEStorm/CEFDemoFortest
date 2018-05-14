@@ -42,7 +42,7 @@
     NSString *EID = [[NSUserDefaults standardUserDefaults] objectForKey:@"CUSTOM_EID"];
     
     if (!EID) {
-        EID = [CEFNotificationManager createEIDwithTags:@[@"Beijing"] customId:@"storm"];
+        EID = [CEFServiceManager createEIDwithTags:@[@"Beijing"] customId:@"storm"];
         [[NSUserDefaults standardUserDefaults]setObject:EID forKey:@"CUSTOM_EID"];
     }
     
